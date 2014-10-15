@@ -1,27 +1,32 @@
+#include <unistd.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
-#include <iostream>
 #include <string>
+#include <iostream>
 
 using namespace std;
 
+
 int main()
 {
-	string in;
+	char* argv[3];
+	argv[0] = new char[3];
 	
-	while(in != "exit")
-	{
-		cout << "$ ";
-		getline(cin,in);
-		cout << endl << in << endl;
-	}
+	//strcpy(argv[0],"ls");	
+	execvp("ls",argv);
 
+	int ret;
 
+	//char* cmd[] = { "ls", "-l", (char *)0};
+	//execvp("ls",cmd);
 
-
-
-
-
-
-
+	cout << endl << "rshell is working!" << endl;
 	return 0;
 }
+
+
+
+
+
