@@ -88,33 +88,7 @@ int main()
 				}
 			//	printf("in parent process\n");
 			}
-			//cstr_count++;
 		}
-		/*
-		for(int i = 0; i < input.size(); i++)
-		{
-			pid_t pid = fork();
-			if(pid == -1)
-			{
-				perror("Error with fork().");
-				exit(1);
-			}
-			else if(pid == 0)
-			{
-				// child process
-				printf("in child process\n");
-			}
-			else if(pid > 0)
-			{
-				// parent process
-				if(wait(NULL) == -1)
-				{
-					perror("error with wait in parent process\n");
-					exit(1);
-				}
-				printf("in parent process\n");
-			}
-		}*/
 
 
 	}
