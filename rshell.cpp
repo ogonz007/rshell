@@ -53,7 +53,9 @@ int main()
 		char* tmp_cstr = new char[input.size()+1];
 //		cout << "input size = " << input.size() << endl;	
 		for(unsigned int i = 0; i < (input.size()+1); i++)
+		{
 			tmp_cstr[i] = '\0';
+		}
 		
 		strcpy(tmp_cstr,input.c_str());
 
@@ -99,23 +101,36 @@ int main()
 				char** argv = new char*[input.size()+1];
 					
 				for(unsigned int i = 0; i < (input.size()+1); i++)
+				{
 					argv[i] = '\0';
+				}
 				
 				argv[0] = strtok(cstr," ");
 				printf("%s\n",argv[0]);
 				
 				unsigned int j = 1;
-				while(j < (input.size()+1) && cstr != '\0')
+				cout << "input.size " << input.size() << endl;
+				cout << "cstr " << cstr << endl;
+
+
+				//while((j < (input.size()+1)) && (cstr != '\0'))
+				
+				while((j < (input.size()+1)) )
 				{
 					argv[j] = strtok(NULL," ");
-					printf("%s\n",argv[j]);
-					j++;
+					cout << argv[j] << endl;
 					cout << "j = " << j << endl;
+					cout << input.size() << endl;
+					j++;
+
 				}
 				cout << "about to execvp" << endl;
 				int r = execvp(argv[0],argv);
 				if(r == -1)
+				{
 					perror("error with execvp");
+					exit(1);
+				}
 				delete []argv;
 			}
 			else if(pid > 0)
