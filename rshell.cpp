@@ -28,7 +28,8 @@ string getCmdLine()
 ///--- checks if the input command is "exit" ---///
 /*bool isExit(char* argu)
 {
-	if(argu == 'exit')
+	char* tmp = 'exit';
+	if(!strcmp(argu,tmp))
 		return true;
 	return false;
 }*/
@@ -36,36 +37,54 @@ string getCmdLine()
 
 int main()
 {
-	char* argv[3] = {'\0'};
-	string input;
-	char* tmp_cstr;
-	char* cstr;
+	//char* argv[3] = {'\0'};
+	//char** argv;
+	//string input;
+	//char* tmp_cstr;
+	//char* cstr;
 	//int cstr_count = 0;
 
 	while(1)
 	{
 		printPrompt();
-		input = getCmdLine();
+		string input = getCmdLine();
 
 		///--- parse user input ---///
-		tmp_cstr = new char[input.size()+1];
+		char* tmp_cstr = new char[input.size()+1];
+//		cout << "input size = " << input.size() << endl;	
+		for(unsigned int i = 0; i < (input.size()+1); i++)
+			tmp_cstr[i] = '\0';
+		
 		strcpy(tmp_cstr,input.c_str());
 
-		cstr = strtok(tmp_cstr,";||&&");
-		
-		while(cstr != '\0')
+		//cstr = strtok(tmp_cstr,";||&&");
+		//printf("%s\n",cstr);	
+		while(tmp_cstr != '\0')
 		{
-		//	printf("%s\n",cstr);
-			//cstr = strtok(tmp_cstr,";||&&");
-			argv[0] = strtok(cstr," ");
-			argv[1] = strtok(NULL," ");
-			cstr = strtok('\0',";||&&");
+			char* cstr = strtok(tmp_cstr,";||&&");
 			
-			/*if(isExit(argv[0]))
+			/*char** argv = new char*[input.size()+1];
+			
+			for(unsigned int i = 0; i < (input.size()+1); i++)
+				argv[i] = '\0';
+			
+			argv[0] = strtok(cstr," ");
+			printf("%s\n",argv[0]);
+			
+			unsigned int j = 1;
+			while(j < (input.size()+1) && cstr != '\0')
+			{
+				argv[j] = strtok(NULL," ");
+				printf("%s\n",argv[j]);
+				j++;
+			}*/
+				
+		/*	if(isExit(argv[0]))
 			{
 				exit(1);
-			}*/
-
+			}
+		*/
+			cout << "about to fork" << endl;
 			pid_t pid = fork();
 			if(pid == -1)
 			{
@@ -75,21 +94,44 @@ int main()
 			else if(pid == 0)
 			{
 				// child process
-				execvp(argv[0],argv);
-			//	printf("in child process\n");
+				printf("in child process\n");
+
+				char** argv = new char*[input.size()+1];
+					
+				for(unsigned int i = 0; i < (input.size()+1); i++)
+					argv[i] = '\0';
+				
+				argv[0] = strtok(cstr," ");
+				printf("%s\n",argv[0]);
+				
+				unsigned int j = 1;
+				while(j < (input.size()+1) && cstr != '\0')
+				{
+					argv[j] = strtok(NULL," ");
+					printf("%s\n",argv[j]);
+					j++;
+					cout << "j = " << j << endl;
+				}
+				cout << "about to execvp" << endl;
+				int r = execvp(argv[0],argv);
+				if(r == -1)
+					perror("error with execvp");
+				delete []argv;
 			}
 			else if(pid > 0)
 			{
 				// parent process
-				if(wait(NULL) == -1)
+				int err = wait(NULL);
+				if(err == -1)
 				{
 					perror("error with wait in parent process\n");
 					exit(1);
 				}
-			//	printf("in parent process\n");
 			}
+			tmp_cstr = strtok('\0',";||&&");
 		}
-
+		delete []tmp_cstr;
+		//cstr = strtok('\0',";||&&");
 
 	}
 
