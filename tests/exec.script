@@ -1,0 +1,263 @@
+Script started on Tue 21 Oct 2014 11:45:10 PM PDT
+~
+ogonz007@hammer $ ls
+[0m[01;34mcs100[0m/  [01;34mDesktop[0m/  [01;34mDocuments[0m/  [01;34mDownloads[0m/  [01;34mfirstrepo[0m/  [01;34mMusic[0m/  [01;32mperc_functions.o[0m*  [01;34mPictures[0m/  [01;34mPublic[0m/  [01;34mTemplates[0m/  [01;34mVideos[0m/
+[m~
+ogonz007@hammer $ cd [K[K[Kcs100
+[0;91m
+===============================================================================
+|                                                                             |
+| You have enabled settings specific for cs100.                               |
+|                                                                             |
+===============================================================================
+[0m
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~[0;95m [0;36m$[0m ls[K[Kcd Desktop/rshell
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell[0;95m [0;36m$[0m ls
+rshell
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell[0;95m [0;36m$[0m cd rshell/
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m ls
+LICENSE  Makefile  README.md  #rshell.#  rshell.cpp  tests
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m make
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m make run
+$ ls - 
+LICENSE  Makefile  README.md  #rshell.#  rshell.cpp  rshell.out  tests
+$ ls -l
+total 28
+-rw------- 1 ogonz007 classes     0 Oct 21 23:19 LICENSE
+-rwx------ 1 ogonz007 classes   240 Oct 20 15:15 Makefile
+-rw------- 1 ogonz007 classes   860 Oct 21 23:31 README.md
+-rw------- 1 ogonz007 classes     1 Oct 21 15:41 #rshell.#
+-rwx------ 1 ogonz007 classes  1992 Oct 21 23:07 rshell.cpp
+-rwx------ 1 ogonz007 classes 11920 Oct 21 23:45 rshell.out
+drwx------ 2 ogonz007 classes  4096 Oct 21 23:44 tests
+$ ls -l -a
+total 68
+drwx------ 4 ogonz007 classes  4096 Oct 21 23:45 .
+drwx------ 3 ogonz007 classes  4096 Oct 15 08:36 ..
+drwx------ 8 ogonz007 classes  4096 Oct 21 23:09 .git
+-rw------- 1 ogonz007 classes     0 Oct 21 23:19 LICENSE
+-rwx------ 1 ogonz007 classes   240 Oct 20 15:15 Makefile
+-rw------- 1 ogonz007 classes   860 Oct 21 23:31 README.md
+-rw------- 1 ogonz007 classes 12288 Oct 21 23:31 .README.md.swp
+-rw------- 1 ogonz007 classes     1 Oct 21 15:41 #rshell.#
+-rwx------ 1 ogonz007 classes  1992 Oct 21 23:07 rshell.cpp
+-rw------- 1 ogonz007 classes 16384 Oct 21 23:07 .rshell.cpp.swp
+-rwx------ 1 ogonz007 classes 11920 Oct 21 23:45 rshell.out
+drwx------ 2 ogonz007 classes  4096 Oct 21 23:44 tests
+$ pwd
+/class/classes/ogonz007/Desktop/rshell/rshell
+$ mkdir tmp
+$ ls
+LICENSE  Makefile  README.md  #rshell.#  rshell.cpp  rshell.out  tests	tmp
+$ rm -rf tmp
+$ ls
+LICENSE  Makefile  README.md  #rshell.#  rshell.cpp  rshell.out  tests
+$ ls; echo testing;    g ; pwd
+LICENSE  Makefile  README.md  #rshell.#  rshell.cpp  rshell.out  tests
+testing
+/class/classes/ogonz007/Desktop/rshell/rshell
+$ ls   ; echo tmp;pwd
+LICENSE  Makefile  README.md  #rshell.#  rshell.cpp  rshell.out  tests
+tmp
+/class/classes/ogonz007/Desktop/rshell/rshell
+$ echo testing; #this should be         is testing the commant d property               ments int he       the rshell
+testing
+$ cd
+error with execvp: No such file or directory
+$ cd # testing the at the cd should give an error
+error with execvp: No such file or directory
+$ exit
+$ exit
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m ls
+LICENSE  Makefile  README.md  #rshell.#  rshell.cpp  rshell.out  tests
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m vim[K[K[Kfg
+bash: fg: current: no such job
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m vim M[KREADME.md 
+7[?47h[?1h=[1;58r[m[H[2J[58;1HE325: ATTENTION
+Found a swap file by the name ".README.md.swp"
+[10Cowned by: ogonz007   dated: Tue Oct 21 23:31:39 2014
+[9Cfile name: ~ogonz007/Desktop/rshell/rshell/README.md
+[10Cmodified: no
+[9Cuser name: ogonz007   host name: hammer.cs.ucr.edu
+[8Cprocess ID: 8607 (still running)
+While opening file "README.md"
+[13Cdated: Tue Oct 21 23:31:35 2014
+
+(1) Another program may be editing the same file.
+    If this is the case, be careful not to end up with two
+    different instances of the same file when making changes.
+    Quit, or continue with caution.
+
+(2) An edit session for this file crashed.
+    If this is the case, use ":recover" or "vim -r README.md"
+    to recover the changes (see ":help recovery").
+    If you did this already, delete the swap file ".README.md.swp"
+    to avoid this message.
+
+Swap file ".README.md.swp" already exists!
+[O]pen Read-Only, (E)dit anyway, (R)ecover, (Q)uit, (A)bort:[58;1H[K[58;1H"README.md" 56L, 860C[>c[1;1Hrshell
+======
+
+Licensing Information: READ LICENSE
+------
+
+Project source can be downloaded from https://github.com/ogonz007/rshell.git
+------
+
+Authors & Contributor List
+------
+Oscar Gonzalez
+Mike Izbicki
+
+File List
+------
+~~~~
+.:
+
+Makefile
+
+LICENSE
+
+README.md
+
+./src
+
+./tests
+~~~~
+/src:
+
+rshell.cpp
+~~~~
+/tests:
+
+exec.script[36;12H[K[37;1H[K[38;11H[K[39;1HHow to run file[39;16H[K[40;1H---------------[40;16H[K[41;10H[K[42;1HOnce you have clones the directory to your local machine, follow the directions below:[43;1H[K[44;8H 1. cd into rshell directory[44;36H[K[45;8H 2. call make
+        3. cd into bin[46;23H[K[47;4H     4. call rshell[47;23H[K[48;5H[K[49;1HProgram Overview:[49;18H[K[50;8H This program was written to implement a very simple version of a command shell called rshell.
+        Rshell can support simple command inputs similar to those used in BASH command shell.
+        It makes commands call through the use of the execvp function and uses a built in exit command
+        to shutdown the program.[53;33H[K[54;5H[K[55;1HBugs:[55;6H[K[56;8H 1.
+[1m[34m~                                                                                                                                                                                         [m[58;169H4,1[11CAll[4;1HP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[58;169H5[5;1H[58;169H6,0-1[6;1H[58;169H7,1  [7;1H[58;169H8[8;1H[58;169H9,0-1[9;1H[58;169H10,1 [10;1H[58;170H1[11;1H[58;170H2[12;1H[58;170H3[13;1H[58;170H4,0-1[14;1H[58;170H5,1  [15;1H[58;170H6[16;1H[58;170H7[17;1H[58;170H8[18;1H[58;170H9,0-1[19;1H[58;169H20,1  [20;1H[58;170H1,0-1[21;1H[58;170H2,1  [22;1H[58;170H3,0-1[23;1H[58;170H4,1  [24;1H[58;170H5,0-1[25;1H[58;170H6,1  [26;1H[58;170H7,0-1[27;1H[58;170H8,1  [28;1H[58;170H9[29;1H[58;169H30[30;1H[58;170H1,0-1[31;1H[58;170H2,1  [32;1H[58;170H3[33;1H[58;170H4[34;1H[58;170H5,0-1[35;1H[58;170H6,1  [36;1H[58;170H7,0-1[37;1H[58;170H8[38;1H[58;170H9,1  [39;1H[58;169H40[40;1H[58;170H1,0-1[41;1H[58;170H2,1  [42;1H[58;170H3,0-1[43;1H[58;170H4,1-8[44;8H[58;170H5[45;8H[58;170H6[46;8H[58;170H7[47;8H[58;170H8,0-1[48;1H[58;170H9,1  [49;1H[58;169H50,1-8[50;8H[58;170H1[51;8H[58;170H2[52;8H[58;170H3[53;8H[58;170H4,0-1[54;1H[58;170H5,1  [55;1H[58;170H6,1-8[56;8H[58;172H4-11[56;11H
+
+[1m-- INSERT --[m[58;13H[K[58;169H56,4-11[7CAll[56;11H[58;172H5-12[56;12H e[58;172H6-13[56;13Hex[58;172H7-14[56;14Hxi[58;172H8-15[56;15Hit[58;172H9-16[56;16H[58;172H10-17[56;17H s[58;173H1-18[56;18Hso[58;173H2-19[56;19Hom[58;173H3-20[56;20Hme[58;173H4-21[56;21H[58;173H5-22[56;22H t[58;173H6-23[56;23Hti[58;173H7-24[56;24Him[58;173H8-25[56;25Hme[58;173H9-26[56;26Hes[58;172H20-27[56;27H[58;173H1-28[56;28H r[58;173H2-29[56;29Hre[58;173H3-30[56;30Heq[58;173H4-31[56;31Hqu[58;173H5-32[56;32Hui[58;173H6-33[56;33Hir[58;173H7-34[56;34Hre[58;173H8-35[56;35Hes[58;173H9-36[56;36H[58;172H30-37[56;37H f[58;173H1-38[56;38Hfo[58;173H2-39[56;39Hor[58;173H3-40[56;40H[58;173H4-41[56;41H i[58;173H5-42[56;42Hit[58;173H6-43[56;43H[58;173H7-44[56;44H t[58;173H8-45[56;45Hto[58;173H9-46[56;46H[58;172H40-47[56;47H b[58;173H1-48[56;48Hbe[58;173H2-49[56;49H[58;173H3-50[56;50H t[58;173H4-51[56;51Hty[58;173H5-52[56;52Hyp[58;173H6-53[56;53Hpe[58;173H7-54[56;54Hes[58;173H8-55[56;55H[58;173H9-56[56;56H t[58;172H50-57[56;57Htw[58;173H1-58[56;58Hwi[58;173H2-59[56;59Hic[58;173H3-60[56;60Hce[58;173H4-61[56;61H[58;173H5-62[56;62H b[58;173H6-63[56;63Hbe[58;173H7-64[56;64Hef[58;173H8-65[56;65Hfo[58;173H9-66[56;66Hor[58;172H60-67[56;67Hre[58;173H1-68[56;68H[58;173H2-69[56;69H t[58;173H3-70[56;70Hth[58;173H4-71[56;71Hhe[58;173H5-72[56;72H[58;173H6-73[56;73H p[58;173H7-74[56;74Hpr[58;173H8-75[56;75Hro[58;173H9-76[56;76Hog[58;172H70-77[56;77Hgr[58;173H1-78[56;78Hra[58;173H2-79[56;79Ham[58;173H3-80[56;80H[58;173H4-81[56;81H t[58;173H5-82[56;82Htr[58;173H6-83[56;83Hru[58;173H7-84[56;84Hue[58;173H8-85[56;85Hu [58;173H7-84[56;84Hul[58;173H8-85[56;85Hly[58;173H9-86[56;86H[58;172H80-87[56;87H e[58;173H1-88[56;88Hex[58;173H2-89[56;89Hxi[58;173H3-90[56;90Hit[58;173H4-91[56;91Hts[58;173H5-92[56;92Hs.[58;173H6-93[56;93H
+ [57;2H[K[58;170H7,1    [57;1H[58;172H2-9[57;9H 2[58;172H3-10[57;10H2.[58;172H4-11[57;11H[58;172H5-12[57;12H c[58;172H6-13[57;13Hcd[58;172H7-14[57;14H[58;172H8-15[57;15H w[58;172H9-16[57;16Hwi[58;172H10-17[57;17Hil[58;173H1-18[57;18Hll[58;173H2-19[57;19H[58;173H3-20[57;20H g[58;173H4-21[57;21Hgi[58;173H5-22[57;22Hiv[58;173H6-23[57;23Hve[58;173H7-24[57;24H[58;173H8-25[57;25H a[58;173H9-26[57;26Han[58;172H20-27[57;27H[58;173H1-28[57;28H e[58;173H2-29[57;29Her[58;173H3-30[57;30Hrr[58;173H4-31[57;31Hro[58;173H5-32[57;32Hor[58;173H6-33[57;33H[1;57r[57;1H
+[1;58r[58;169H[K[58;169H58,1[10CBot[57;1H[58;172H2-9[57;9H 3[58;172H3-10[57;10H3.[58;172H4-11[57;11H[58;172H5-12[57;12H |[58;172H6-13[57;13H||[58;172H7-14[57;14H[58;172H8-15[57;15H a[58;172H9-16[57;16Han[58;172H10-17[57;17Hnd[58;173H1-18[57;18H[58;173H2-19[57;19H &[58;173H3-20[57;20H&&[58;173H4-21[57;21H[58;173H5-22[57;22H a[58;173H6-23[57;23H  [58;173H5-22[57;22H o[58;173H6-23[57;23Hop[58;173H7-24[57;24Hpe[58;173H8-25[57;25Her[58;173H9-26[57;26Hra[58;172H20-27[57;27Hat[58;173H1-28[57;28Hto[58;173H2-29[57;29Hor[58;173H3-30[57;30Hrs[58;173H4-31[57;31H[58;173H5-32[57;32H w[58;173H6-33[57;33Hwe[58;173H7-34[57;34Her[58;173H8-35[57;35Hre[58;173H9-36[57;36H[58;172H30-37[57;37H n[58;173H1-38[57;38Hno[58;173H2-39[57;39Hot[58;173H3-40[57;40H[58;173H4-41[57;41H i[58;173H5-42[57;42Him[58;173H6-43[57;43Hmp[58;173H7-44[57;44Hpl[58;173H8-45[57;45Hle[58;173H9-46[57;46Hem[58;172H40-47[57;47Hme[58;173H1-48[57;48Hen[58;173H2-49[57;49Hnt[58;173H3-50[57;50Hte[58;173H4-51[57;51Hed[58;173H5-52[57;52H[58;1H[K[57;51H[58;169H58,44-51      Bot[57;51H[58;169H[K[58;1H:w"README.md" 58L, 1013C written[138C58,44-51      Bot[58;169H[K[58;169H58,44-51      Bot[57;51H[58;1H[K[58;1H:q[58;1H[K[58;1H[?1l>[2J[?47l8[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m ls
+LICENSE  Makefile  README.md  #rshell.#  rshell.cpp  rshell.out  tests
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m git add README.md 
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m git commit -m"[K "finall[K readme"
+[restartedCode 75d12a9] final readme
+ Committer: Oscar Gonzalez <ogonz007@hammer.cs.ucr.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 58 insertions(+), 4 deletions(-)
+ rewrite README.md (76%)
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m git push
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Everything up-to-date
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m ls
+LICENSE  Makefile  README.md  #rshell.#  rshell.cpp  rshell.out  tests
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m git add LICENSE 
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m f[Kgit commit -m 'license info'
+[restartedCode 2822e3a] license info
+ Committer: Oscar Gonzalez <ogonz007@hammer.cs.ucr.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 LICENSE
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m git push
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Everything up-to-date
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m ls
+LICENSE  Makefile  README.md  #rshell.#  rshell.cpp  rshell.out  tests
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m vim LICENSE 
+7[?47h[?1h=[1;58r[m[H[2J[58;1H"LICENSE" 0L, 0C[>c[2;1H[1m[34m~                                                                                                                                                                                         [3;1H~                                                                                                                                                                                         [4;1H~                                                                                                                                                                                         [5;1H~                                                                                                                                                                                         [6;1H~                                                                                                                                                                                         [7;1H~                                                                                                                                                                                         [8;1H~                                                                                                                                                                                         [9;1H~                                                                                                                                                                                         [10;1H~                                                                                                                                                                                         [11;1H~                                                                                                                                                                                         [12;1H~                                                                                                                                                                                         [13;1H~                                                                                                                                                                                         [14;1H~                                                                                                                                                                                         [15;1H~                                                                                                                                                                                         [16;1H~                                                                                                                                                                                         [17;1H~                                                                                                                                                                                         [18;1H~                                                                                                                                                                                         [19;1H~                                                                                                                                                                                         [20;1H~                                                                                                                                                                                         [21;1H~                                                                                                                                                                                         [22;1H~                                                                                                                                                                                         [23;1H~                                                                                                                                                                                         [24;1H~                                                                                                                                                                                         [25;1H~                                                                                                                                                                                         [26;1H~                                                                                                                                                                                         [27;1H~                                                                                                                                                                                         [28;1H~                                                                                                                                                                                         [29;1H~                                                                                                                                                                                         [30;1H~                                                                                                                                                                                         [31;1H~                                                                                                                                                                                         [32;1H~                                                                                                                                                                                         [33;1H~                                                                                                                                                                                         [34;1H~                                                                                                                                                                                         [35;1H~                                                                                                                                                                                         [36;1H~                                                                                                                                                                                         [37;1H~                                                                                                                                                                                         [38;1H~                                                                                                                                                                                         [39;1H~                                                                                                                                                                                         [40;1H~                                                                                                                                                                                         [41;1H~                                                                                                                                                                                         [42;1H~                                                                                                                                                                                         [43;1H~                                                                                                                                                                                         [44;1H~                                                                                                                                                                                         [45;1H~                                                                                                                                                                                         [46;1H~                                                                                                                                                                                         [47;1H~                                                                                                                                                                                         [48;1H~                                                                                                                                                                                         [49;1H~                                                                                                                                                                                         [50;1H~                                                                                                                                                                                         [51;1H~                                                                                                                                                                                         [52;1H~                                                                                                                                                                                         [53;1H~                                                                                                                                                                                         [54;1H~                                                                                                                                                                                         [55;1H~                                                                                                                                                                                         [56;1H~                                                                                                                                                                                         [57;1H~                                                                                                                                                                                         [m[58;169H0,0-1[9CAll[1;1HP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[58;1H[1m-- INSERT --[m[58;13H[K[58;169H0,1[11CAll[1;1HC[58;169H1,2[1;2HCo[58;171H3[1;3Hop[58;171H4[1;4Hpy[58;171H5[1;5Hyr[58;171H6[1;6Hri[58;171H7[1;7Hig[58;171H8[1;8Hgh[58;171H9[1;9Hht[58;171H10[1;10H[58;172H1[1;11H ([58;172H2[1;12H(c[58;172H3[1;13H[46m([mc[46m)[m[58;172H4[1;14H(c)[58;172H5[1;15H 2[58;172H6[1;16H20[58;172H7[1;17H01[58;172H8[1;18H14[58;172H9[1;19H[58;171H20[1;20H[58;171H19[1;19H4,[58;171H20[1;20H[58;172H1[1;21H O[58;172H2[1;22HOs[58;172H3[1;23Hsc[58;172H4[1;24Hca[58;172H5[1;25Har[58;172H6[1;26H[58;172H7[1;27H G[58;172H8[1;28HGo[58;172H9[1;29Hon[58;171H30[1;30Hnz[58;172H1[1;31Hza[58;172H2[1;32Hal[58;172H3[1;33Hle[58;172H4[1;34Hez[58;172H5[1;35H[2;1H[K[58;169H2,1 [2;1HA[58;171H2[2;2HAl[58;171H3[2;3Hll[58;171H4[2;4H[58;171H5[2;5H r[58;171H6[2;6Hri[58;171H7[2;7Hig[58;171H8[2;8Hgh[58;171H9[2;9Hht[58;171H10[2;10Hts[58;172H1[2;11H[58;172H2[2;12H r[58;172H3[2;13Hre[58;172H4[2;14Hes[58;172H5[2;15Hse[58;172H6[2;16Her[58;172H7[2;17Hrv[58;172H8[2;18Hve[58;172H9[2;19Hed[58;171H20[2;20Hd.[58;172H1[2;21H[3;1H[K[58;169H3,1 [3;1H[4;1H[K[58;169H4[4;1HA[58;171H2[4;2HAl[58;171H3[4;3Hll[58;171H4[4;4H[58;171H5[4;5H b[58;171H6[4;6Hba[58;171H7[4;7Has[58;171H8[4;8Hsh[58;171H9[4;9H[58;171H10[4;10H s[58;172H1[4;11Hsc[58;172H2[4;12Hcr[58;172H3[4;13Hri[58;172H4[4;14Hip[58;172H5[4;15Hpt[58;172H6[4;16Hts[58;172H7[4;17H[58;172H8[4;18H l[58;172H9[4;19Hli[58;171H20[4;20Hic[58;172H1[4;21Hce[58;172H2[4;22Hen[58;172H3[4;23Hns[58;172H4[4;24Hse[58;172H5[4;25Hed[58;172H6[4;26H[58;172H7[4;27H u[58;172H8[4;28Hun[58;172H9[4;29Hnd[58;171H30[4;30Hde[58;172H1[4;31Her[58;172H2[4;32H[58;172H3[4;33H t[58;172H4[4;34Hth[58;172H5[4;35Hhe[58;172H6[4;36H[58;172H7[4;37H B[58;172H8[4;38HBS[58;172H9[4;39HSD[58;171H40[4;40HD3[58;172H1[4;41H3.[58;172H2[4;42H.:[58;172H3[4;43H:w[58;172H4[4;44H[4;43H[K[58;172H3[4;43H[4;42H[K[58;172H2[4;42H[4;41H[K[58;172H1[4;41H3.[58;172H2[4;42H[58;1H[K[4;41H[58;169H4,41[10CAll[4;41H[58;169H[K[58;1H:w"LICENSE" 4L, 99C written[143C4,41[10CAll[58;169H[K[58;169H4,41[10CAll[4;41H[58;1H[K[58;1H:q[58;1H[K[58;1H[?1l>[2J[?47l8[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m git add LICENSE 
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m git commit -m "licenses updated"
+[restartedCode 90d3f11] licenses updated
+ Committer: Oscar Gonzalez <ogonz007@hammer.cs.ucr.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 4 insertions(+)
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m git push 
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Everything up-to-date
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m ls
+LICENSE  Makefile  README.md  #rshell.#  rshell.cpp  rshell.out  tests
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m mkdir src
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m cp rshell.cpp src
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m ls
+LICENSE  Makefile  README.md  #rshell.#  rshell.cpp  rshell.out  src  tests
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m cd r[Ksrc/
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell/src[0;95m (restartedCode) [0;36m$[0m ls
+rshell.cpp
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell/src[0;95m (restartedCode) [0;36m$[0m cd //
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m//[0;95m [0;36m$[0m cd ~
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~[0;95m [0;36m$[0m cd Desktop/rshell
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell[0;95m [0;36m$[0m s[Kcd rshell/
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m ls
+LICENSE  Makefile  README.md  #rshell.#  rshell.cpp  rshell.out  src  tests
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;95m (restartedCode) [0;36m$[0m cd [K[K[Kcd [K[K[Kgit add src
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/Desktop/rshell/rshell[0;
