@@ -49,7 +49,7 @@ int main()
 
 				while(cstr != '\0')
 				{
-					if(strcmp(cstr,"exit") == 0)
+					if((strcmp(cstr,"exit") == 0) || strcmp(cstr," exit") == 0)
 						{
 							exit(0);
 						}
@@ -75,16 +75,26 @@ int main()
 				
 						unsigned int j = 1;
 					
-						while((j < (input.size()+1)) )
+						while((j < (input.size()+1)))
 						{
-							argv[j] = strtok(NULL," ");
+							argv[j] = strtok('\0'," ");
 							j++;
 						}
 						
 						///--- checking for commenting using # sign ---///
+						/*unsigned int k = 0;
+						while(k < (input.size()+1))
+						{
+							if(*argv[k] == '#')
+								*argv[k] = '\0';
+
+								//return 0;
+							k++;
+						}*/
+
 						if((*argv[0] == '#'))
 						{
-							break;
+							return 0;//break;
 						}
 
 						int r = execvp(argv[0],argv);
@@ -98,7 +108,7 @@ int main()
 					else if(pid > 0)
 					{
 						// parent process
-						int err = wait(NULL);
+						int err = wait('\0');
 						if(err == -1)
 						{
 							perror("error with wait in parent process\n");
