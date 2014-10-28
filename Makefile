@@ -8,8 +8,9 @@ rshell:
 	@mkdir bin
 	@cp rshell bin
 run:
-	@./rshell.out
+	@bin/rshell
 
 clean: 
 	@rm rshell
+	@rm -rf bin
 	@echo "THIS FOLDER IS CLEAN!!"
