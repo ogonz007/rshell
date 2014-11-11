@@ -10,11 +10,16 @@
 #define FLAG_l 1
 #define FLAG_R 1
 
+void Check_l_flag(int flg[],struct stat statbuf);
+void Check_a_flag(int flg[],dirent* direntp,struct stat statbuf);
+
 
 void Check_l_flag(int flg[],struct stat statbuf)
 {
 	if(flg[1])
-	{	
+	{
+		
+
 		///--- checking is DIR ---///
 		if(S_ISDIR(statbuf.st_mode))
 			std::cout << 'd';
@@ -28,13 +33,11 @@ void Check_l_flag(int flg[],struct stat statbuf)
 	return;
 }
 
-void Check_a_flag(int flg[],dirent* direntp,struct stat statbuf)
+bool Check_a_flag(int flg[])
 {
 	if(flg[0])
-		if(direntp->d_name[0] == '.')
-			std::cout << direntp->d_name << std::endl;
-	Check_l_flag(flg,statbuf);
-	return;
+		return true;;
+	return false;
 }
 
 
@@ -69,11 +72,13 @@ int main(int argc, char** argv)
 
 	while((direntp = readdir(dirp)))
 	{
+		if(direntp->d_name[0] == '.' && !Check_a_flag(flags))
+			continue;
+			
 		stat(direntp->d_name,&statbuf);
-		Check_a_flag(flags,direntp,statbuf);
+		//Check_a_flag(flags,direntp,statbuf);
 		//Check_l_flag(flags,statbuf);
-		if(direntp->d_name[0] != '.')
-			cout << ' ' << direntp->d_name << endl;
+		cout << ' ' << direntp->d_name << endl;
 	}
 	closedir(dirp);
 
