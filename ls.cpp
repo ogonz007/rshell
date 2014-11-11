@@ -11,6 +11,34 @@
 #define FLAG_R 1
 
 
+void Check_l_flag(int flg[],struct stat statbuf)
+{
+	if(flg[1])
+	{	
+		///--- checking is DIR ---///
+		if(S_ISDIR(statbuf.st_mode))
+			std::cout << 'd';
+		else std::cout << '-';
+		
+		///--- checking owner perms ---///
+
+
+	}
+
+	return;
+}
+
+void Check_a_flag(int flg[],dirent* direntp,struct stat statbuf)
+{
+	if(flg[0])
+		if(direntp->d_name[0] == '.')
+			std::cout << direntp->d_name << std::endl;
+	Check_l_flag(flg,statbuf);
+	return;
+}
+
+
+
 using namespace std;
 
 int main(int argc, char** argv)
@@ -39,12 +67,13 @@ int main(int argc, char** argv)
 	
 	struct stat statbuf;
 
-	
-
 	while((direntp = readdir(dirp)))
 	{
 		stat(direntp->d_name,&statbuf);
-		cout << direntp->d_name << endl;
+		Check_a_flag(flags,direntp,statbuf);
+		//Check_l_flag(flags,statbuf);
+		if(direntp->d_name[0] != '.')
+			cout << ' ' << direntp->d_name << endl;
 	}
 	closedir(dirp);
 
