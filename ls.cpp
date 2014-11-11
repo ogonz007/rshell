@@ -43,6 +43,9 @@ int main(int argc, char** argv)
 		}
 	}
 	
+/******* HARD CODE FLAG POSITION INTO flags[] SO THAT 0 MEANS MISSING
+ * THAT FLAG AND 1 MEANS FLAG WAS PASSED IN *******/
+	
 	DIR* dirp = opendir(dirName);
 	dirent* direntp;
 	
