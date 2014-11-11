@@ -7,8 +7,8 @@
 #include <iostream>
 
 #define FLAG_a 1
-#define FLAG_l 2
-#define FLAG_R 3
+#define FLAG_l 1
+#define FLAG_R 1
 
 
 using namespace std;
@@ -16,8 +16,8 @@ using namespace std;
 int main(int argc, char** argv)
 {
 	char dirName[] = ".";
-	cout << "argc = " << argc << endl;
 	int flags[3] = {0};
+	
 	for(int i = 0; i < argc; i++)
 	{
 		if(argv[i][0] == '-')
@@ -25,26 +25,14 @@ int main(int argc, char** argv)
 			for(int j = 1; argv[i][j] != 0; j++)
 			{
 				if(argv[i][j] == 'a')
-				{
-					flags[i-1] |= FLAG_a;
-					cout << "flag = -a" << endl;
-				}
+					flags[0] |= FLAG_a;
 				else if(argv[i][j] == 'l')
-				{
-					flags[i-1] |= FLAG_l;
-					cout << "flag = -l" << endl;
-				}
+					flags[1] |= FLAG_l;
 				else if(argv[i][j] == 'R')
-				{
-					flags[i-1] |= FLAG_R;
-					cout << "flag = -R" << endl;
-				}
+					flags[2] |= FLAG_R;
 			}
 		}
 	}
-	
-/******* HARD CODE FLAG POSITION INTO flags[] SO THAT 0 MEANS MISSING
- * THAT FLAG AND 1 MEANS FLAG WAS PASSED IN *******/
 	
 	DIR* dirp = opendir(dirName);
 	dirent* direntp;
