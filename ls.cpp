@@ -3,6 +3,9 @@
 #include <dirent.h>
 #include <unistd.h>
 #include <errno.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <cstring>
 #include <string>
 #include <time.h>
 #include <pwd.h>
@@ -87,31 +90,31 @@ bool Check_a_flag(int flg[])
 		return true;;
 	return false;
 }
-/*
-void outPutFileNames(char dirName[],int flags[])
+
+void outPutFileNames(string dirName,int flags[])
 {
-	cout << "inside outPutFileNames" << endl;
-	DIR* dirp = opendir(dirName);
+	DIR* dirp = opendir(dirName.c_str());
+	if(dirp == '\0'){perror("error with opendir");exit(1);}
 	dirent* direntp;
 	struct stat statbuf;
 	while((direntp = readdir(dirp)))
 	{
-		cout << "inside while loop" << endl;
+		if(direntp == '\0'){perror("error with readdir");exit(1);}
 		if(direntp->d_name[0] == '.' && !Check_a_flag(flags))
 			continue;
-			
-		stat(direntp->d_name,&statbuf);
+		int er = stat(direntp->d_name,&statbuf);
+		if(er == -1) {perror("error with stat");exit(1);}
 		Check_l_flag(flags,statbuf);
+		cout << direntp->d_name << endl;
 		//outPutFileNames(direntp);
 	}
-	cout << direntp->d_name << endl;
 	closedir(dirp);
 	return;
 }
-*/
+
 int main(int argc, char** argv)
 {
-	char dirName[] = ".";
+	string dirName = ".";
 	int flags[3] = {0};
 	
 	for(int i = 0; i < argc; i++)
@@ -129,23 +132,37 @@ int main(int argc, char** argv)
 			}
 		}
 	}
-	
-	DIR* dirp = opendir(dirName);
+	outPutFileNames(dirName,flags);	
+/*	DIR* dirp = opendir(dirName.c_str());
 	dirent* direntp = '\0';
 	//outPutFileNames(dirName,flags);
 	
 	struct stat statbuf;
+	
 	while((direntp = readdir(dirp)))
 	{
+		string s = "./";
 		if(direntp->d_name[0] == '.' && !Check_a_flag(flags))
 			continue;
 			
-		stat(direntp->d_name,&statbuf);
+		s = s + direntp->d_name;
+		stat(s.c_str(),&statbuf);
 		Check_l_flag(flags,statbuf);
 	//	outPutFileNames(direntp);
 		cout << direntp->d_name << endl;
 	}
 	closedir(dirp);
-
+*/
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
