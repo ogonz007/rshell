@@ -102,11 +102,18 @@ void outPutFileNames(string dirName,int flags[])
 		if(direntp == '\0'){perror("error with readdir");exit(1);}
 		if(direntp->d_name[0] == '.' && !Check_a_flag(flags))
 			continue;
+
 		int er = stat(direntp->d_name,&statbuf);
 		if(er == -1) {perror("error with stat");exit(1);}
 		Check_l_flag(flags,statbuf);
 		cout << direntp->d_name << endl;
-		//outPutFileNames(direntp);
+
+		/*if(S_ISDIR(statbuf.st_mode) && (direntp->d_name[0] != '.' && dirName != ".."))
+		{
+			cout << "dirName = " << dirName << endl;
+			string dirTmp = dirName + '/' + direntp->d_name;
+			outPutFileNames(dirTmp,flags);
+		}*/
 	}
 	closedir(dirp);
 	return;
@@ -133,26 +140,7 @@ int main(int argc, char** argv)
 		}
 	}
 	outPutFileNames(dirName,flags);	
-/*	DIR* dirp = opendir(dirName.c_str());
-	dirent* direntp = '\0';
-	//outPutFileNames(dirName,flags);
-	
-	struct stat statbuf;
-	
-	while((direntp = readdir(dirp)))
-	{
-		string s = "./";
-		if(direntp->d_name[0] == '.' && !Check_a_flag(flags))
-			continue;
-			
-		s = s + direntp->d_name;
-		stat(s.c_str(),&statbuf);
-		Check_l_flag(flags,statbuf);
-	//	outPutFileNames(direntp);
-		cout << direntp->d_name << endl;
-	}
-	closedir(dirp);
-*/
+
 	return 0;
 }
 
