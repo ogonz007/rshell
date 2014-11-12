@@ -84,3 +84,4 @@ cp Program OverView:
 cp Bugs:
 	1. If no output is added, but a flags is passed for using a method of copying,
 		the program interprets the flag name as the output file. 
+	2. The method flag must be added in the thrid position. Will not work if in any other position other than last
