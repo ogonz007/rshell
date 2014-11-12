@@ -19,7 +19,6 @@ using namespace std;
 #define FLAG_l 1
 #define FLAG_R 1
 
-//void Check_l_flag(int flg[],struct stat statbuf);
 bool Check_a_flag(int flg[]);//,dirent* direntp,struct stat statbuf);
 
 void getMonth(int pos)
@@ -115,7 +114,8 @@ void outPutFileNames(string dirName,int flags[])
 			outPutFileNames(dirTmp,flags);
 		}*/
 	}
-	closedir(dirp);
+	int ertmp = closedir(dirp);
+	if(ertmp == -1){perror("error with closedir");exit(1);}
 	return;
 }
 
