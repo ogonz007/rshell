@@ -1,0 +1,39 @@
+Script started on Tue 11 Nov 2014 11:53:33 PM PST
+~
+ogonz007@hammer $ cs100
+[0;91m
+===============================================================================
+|                                                                             |
+| You have enabled settings specific for cs100.                               |
+|                                                                             |
+===============================================================================
+[0m
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~[0;95m [0;36m$[0m cd cs100/[K[K[K00/
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100[0;95m [0;36m$[0m cd HW/
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW[0;95m [0;36m$[0m cd rshell
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m ls
+cp.cpp	cp.script  input  LICENSE  ls.cpp  Makefile  README-ls.md  README.md  rshell.cpp  src  tests  Timer.h
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m make
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m bin/ cp [K[K[K[Kc-[Kp input p[Koutput
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m rm output
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m rm output[4hbin/cp inp[4lut[C[C[C[C[C[C[C[C[C[C 1
+Single Char Stream Times: 
+	wall time: 0.353193
+	user time: 0.220967
+	system time: 0.009999
+Single Char Unix Call Times: 
+	wall time: 7.43379
+	user time: 0.46193
+	system time: 6.86696
+Buffer Unix Call Times: 
+	wall time: 0.101852
+	user time: 0
+	system time: 0.008999
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m 
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m exit
+exit
+~
+ogonz007@hammer $ exit
+exit
+
+Script done on Tue 11 Nov 2014 11:55:20 PM PST

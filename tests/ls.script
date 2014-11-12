@@ -1,0 +1,220 @@
+Script started on Tue 11 Nov 2014 11:56:26 PM PST
+~
+ogonz007@hammer $ cs100
+[0;91m
+===============================================================================
+|                                                                             |
+| You have enabled settings specific for cs100.                               |
+|                                                                             |
+===============================================================================
+[0m
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~[0;95m [0;36m$[0m cd cs100/
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100[0;95m [0;36m$[0m cd HW/
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW[0;95m [0;36m$[0m cd rshell
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m ls
+bin  cp  cp.cpp  input	LICENSE  ls  ls.cpp  ls.script	Makefile  output  README-ls.md	README.md  rshell  rshell.cpp  src  tests  Timer.h
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m bin/ls
+LICENSE
+Makefile
+README.md
+rshell.cpp
+src
+tests
+cp.cpp
+README-ls.md
+ls.script
+Timer.h
+input
+ls.cpp
+rshell
+ls
+cp
+bin
+output
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m bin/ls -l
+-rw------- 1 ogonz007 classes 99 Oct 28 10:5 LICENSE
+-rwx------ 1 ogonz007 classes 422 Nov 11 23:49 Makefile
+-rw------- 1 ogonz007 classes 1964 Nov 11 23:45 README.md
+-rwx------ 1 ogonz007 classes 1992 Nov 3 11:15 rshell.cpp
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:46 src
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:55 tests
+-rw------- 1 ogonz007 classes 3277 Nov 11 23:51 cp.cpp
+-rw------- 1 ogonz007 classes 1254 Nov 11 23:37 README-ls.md
+-rw------- 1 ogonz007 classes 0 Nov 11 23:55 ls.script
+-rw------- 1 ogonz007 classes 1951 Nov 3 11:31 Timer.h
+-rw------- 1 ogonz007 classes 4953699 Nov 11 23:37 input
+-rw------- 1 ogonz007 classes 3214 Nov 11 23:37 ls.cpp
+-rwx------ 1 ogonz007 classes 11920 Nov 11 23:52 rshell
+-rwx------ 1 ogonz007 classes 15697 Nov 11 23:52 ls
+-rwx------ 1 ogonz007 classes 16527 Nov 11 23:52 cp
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:52 bin
+-rw------- 1 ogonz007 classes 4953699 Nov 11 23:53 output
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m bin/ls -l[Ka
+.
+..
+.git
+LICENSE
+Makefile
+README.md
+rshell.cpp
+src
+tests
+cp.cpp
+README-ls.md
+ls.script
+Timer.h
+input
+ls.cpp
+rshell
+ls
+cp
+bin
+output
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m bin/ls -al
+drwx------ 6 ogonz007 classes 4096 Nov 11 23:55 .
+drwx------ 4 ogonz007 classes 4096 Nov 4 13:50 ..
+drwx------ 8 ogonz007 classes 4096 Nov 11 23:51 .git
+-rw------- 1 ogonz007 classes 99 Oct 28 10:5 LICENSE
+-rwx------ 1 ogonz007 classes 422 Nov 11 23:49 Makefile
+-rw------- 1 ogonz007 classes 1964 Nov 11 23:45 README.md
+-rwx------ 1 ogonz007 classes 1992 Nov 3 11:15 rshell.cpp
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:46 src
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:55 tests
+-rw------- 1 ogonz007 classes 3277 Nov 11 23:51 cp.cpp
+-rw------- 1 ogonz007 classes 1254 Nov 11 23:37 README-ls.md
+-rw------- 1 ogonz007 classes 0 Nov 11 23:55 ls.script
+-rw------- 1 ogonz007 classes 1951 Nov 3 11:31 Timer.h
+-rw------- 1 ogonz007 classes 4953699 Nov 11 23:37 input
+-rw------- 1 ogonz007 classes 3214 Nov 11 23:37 ls.cpp
+-rwx------ 1 ogonz007 classes 11920 Nov 11 23:52 rshell
+-rwx------ 1 ogonz007 classes 15697 Nov 11 23:52 ls
+-rwx------ 1 ogonz007 classes 16527 Nov 11 23:52 cp
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:52 bin
+-rw------- 1 ogonz007 classes 4953699 Nov 11 23:53 output
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m bin/ls -al[K[Kla
+drwx------ 6 ogonz007 classes 4096 Nov 11 23:55 .
+drwx------ 4 ogonz007 classes 4096 Nov 4 13:50 ..
+drwx------ 8 ogonz007 classes 4096 Nov 11 23:51 .git
+-rw------- 1 ogonz007 classes 99 Oct 28 10:5 LICENSE
+-rwx------ 1 ogonz007 classes 422 Nov 11 23:49 Makefile
+-rw------- 1 ogonz007 classes 1964 Nov 11 23:45 README.md
+-rwx------ 1 ogonz007 classes 1992 Nov 3 11:15 rshell.cpp
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:46 src
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:55 tests
+-rw------- 1 ogonz007 classes 3277 Nov 11 23:51 cp.cpp
+-rw------- 1 ogonz007 classes 1254 Nov 11 23:37 README-ls.md
+-rw------- 1 ogonz007 classes 0 Nov 11 23:55 ls.script
+-rw------- 1 ogonz007 classes 1951 Nov 3 11:31 Timer.h
+-rw------- 1 ogonz007 classes 4953699 Nov 11 23:37 input
+-rw------- 1 ogonz007 classes 3214 Nov 11 23:37 ls.cpp
+-rwx------ 1 ogonz007 classes 11920 Nov 11 23:52 rshell
+-rwx------ 1 ogonz007 classes 15697 Nov 11 23:52 ls
+-rwx------ 1 ogonz007 classes 16527 Nov 11 23:52 cp
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:52 bin
+-rw------- 1 ogonz007 classes 4953699 Nov 11 23:53 output
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m bin/ls -la[K -a
+drwx------ 6 ogonz007 classes 4096 Nov 11 23:55 .
+drwx------ 4 ogonz007 classes 4096 Nov 4 13:50 ..
+drwx------ 8 ogonz007 classes 4096 Nov 11 23:51 .git
+-rw------- 1 ogonz007 classes 99 Oct 28 10:5 LICENSE
+-rwx------ 1 ogonz007 classes 422 Nov 11 23:49 Makefile
+-rw------- 1 ogonz007 classes 1964 Nov 11 23:45 README.md
+-rwx------ 1 ogonz007 classes 1992 Nov 3 11:15 rshell.cpp
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:46 src
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:55 tests
+-rw------- 1 ogonz007 classes 3277 Nov 11 23:51 cp.cpp
+-rw------- 1 ogonz007 classes 1254 Nov 11 23:37 README-ls.md
+-rw------- 1 ogonz007 classes 0 Nov 11 23:55 ls.script
+-rw------- 1 ogonz007 classes 1951 Nov 3 11:31 Timer.h
+-rw------- 1 ogonz007 classes 4953699 Nov 11 23:37 input
+-rw------- 1 ogonz007 classes 3214 Nov 11 23:37 ls.cpp
+-rwx------ 1 ogonz007 classes 11920 Nov 11 23:52 rshell
+-rwx------ 1 ogonz007 classes 15697 Nov 11 23:52 ls
+-rwx------ 1 ogonz007 classes 16527 Nov 11 23:52 cp
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:52 bin
+-rw------- 1 ogonz007 classes 4953699 Nov 11 23:53 output
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m bin/ls -l -a[1P -aa -a[C[C[C[Kl
+drwx------ 6 ogonz007 classes 4096 Nov 11 23:55 .
+drwx------ 4 ogonz007 classes 4096 Nov 4 13:50 ..
+drwx------ 8 ogonz007 classes 4096 Nov 11 23:51 .git
+-rw------- 1 ogonz007 classes 99 Oct 28 10:5 LICENSE
+-rwx------ 1 ogonz007 classes 422 Nov 11 23:49 Makefile
+-rw------- 1 ogonz007 classes 1964 Nov 11 23:45 README.md
+-rwx------ 1 ogonz007 classes 1992 Nov 3 11:15 rshell.cpp
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:46 src
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:55 tests
+-rw------- 1 ogonz007 classes 3277 Nov 11 23:51 cp.cpp
+-rw------- 1 ogonz007 classes 1254 Nov 11 23:37 README-ls.md
+-rw------- 1 ogonz007 classes 0 Nov 11 23:55 ls.script
+-rw------- 1 ogonz007 classes 1951 Nov 3 11:31 Timer.h
+-rw------- 1 ogonz007 classes 4953699 Nov 11 23:37 input
+-rw------- 1 ogonz007 classes 3214 Nov 11 23:37 ls.cpp
+-rwx------ 1 ogonz007 classes 11920 Nov 11 23:52 rshell
+-rwx------ 1 ogonz007 classes 15697 Nov 11 23:52 ls
+-rwx------ 1 ogonz007 classes 16527 Nov 11 23:52 cp
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:52 bin
+-rw------- 1 ogonz007 classes 4953699 Nov 11 23:53 output
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m bin/ls -a -l[Ka
+.
+..
+.git
+LICENSE
+Makefile
+README.md
+rshell.cpp
+src
+tests
+cp.cpp
+README-ls.md
+ls.script
+Timer.h
+input
+ls.cpp
+rshell
+ls
+cp
+bin
+output
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m bin/ls -a -a[1P -al -a[C[C[C[K
+-rw------- 1 ogonz007 classes 99 Oct 28 10:5 LICENSE
+-rwx------ 1 ogonz007 classes 422 Nov 11 23:49 Makefile
+-rw------- 1 ogonz007 classes 1964 Nov 11 23:45 README.md
+-rwx------ 1 ogonz007 classes 1992 Nov 3 11:15 rshell.cpp
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:46 src
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:55 tests
+-rw------- 1 ogonz007 classes 3277 Nov 11 23:51 cp.cpp
+-rw------- 1 ogonz007 classes 1254 Nov 11 23:37 README-ls.md
+-rw------- 1 ogonz007 classes 0 Nov 11 23:55 ls.script
+-rw------- 1 ogonz007 classes 1951 Nov 3 11:31 Timer.h
+-rw------- 1 ogonz007 classes 4953699 Nov 11 23:37 input
+-rw------- 1 ogonz007 classes 3214 Nov 11 23:37 ls.cpp
+-rwx------ 1 ogonz007 classes 11920 Nov 11 23:52 rshell
+-rwx------ 1 ogonz007 classes 15697 Nov 11 23:52 ls
+-rwx------ 1 ogonz007 classes 16527 Nov 11 23:52 cp
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:52 bin
+-rw------- 1 ogonz007 classes 4953699 Nov 11 23:53 output
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m bin/ls -l -[1P -[C[Cl
+-rw------- 1 ogonz007 classes 99 Oct 28 10:5 LICENSE
+-rwx------ 1 ogonz007 classes 422 Nov 11 23:49 Makefile
+-rw------- 1 ogonz007 classes 1964 Nov 11 23:45 README.md
+-rwx------ 1 ogonz007 classes 1992 Nov 3 11:15 rshell.cpp
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:46 src
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:55 tests
+-rw------- 1 ogonz007 classes 3277 Nov 11 23:51 cp.cpp
+-rw------- 1 ogonz007 classes 1254 Nov 11 23:37 README-ls.md
+-rw------- 1 ogonz007 classes 0 Nov 11 23:55 ls.script
+-rw------- 1 ogonz007 classes 1951 Nov 3 11:31 Timer.h
+-rw------- 1 ogonz007 classes 4953699 Nov 11 23:37 input
+-rw------- 1 ogonz007 classes 3214 Nov 11 23:37 ls.cpp
+-rwx------ 1 ogonz007 classes 11920 Nov 11 23:52 rshell
+-rwx------ 1 ogonz007 classes 15697 Nov 11 23:52 ls
+-rwx------ 1 ogonz007 classes 16527 Nov 11 23:52 cp
+drwx------ 2 ogonz007 classes 4096 Nov 11 23:52 bin
+-rw------- 1 ogonz007 classes 4953699 Nov 11 23:53 output
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m exit
+exit
+~
+ogonz007@hammer $ exit
+exit
+
+Script done on Tue 11 Nov 2014 11:57:29 PM PST
