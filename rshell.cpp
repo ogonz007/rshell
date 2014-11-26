@@ -33,10 +33,10 @@ string getCmdLine()
 int main()
 {
 	char delims[] = {';','|','&'};
-	int statementPos = 0;
-	bool good = 1;
-	int connectors[1024]; 
-	for(int i = 0; i < 1024; i++)
+//	int statementPos = 0;
+//	bool good = 1;
+	int connectors[50] = {0}; 
+	for(int i = 0; i < 50; i++)
 		connectors[i] = 0;
 
 	while(1)
@@ -45,12 +45,14 @@ int main()
 		printPrompt();
 		string input = getCmdLine();
 		///--- search for connector types ---///
-		for(unsigned int i = 0; i < (input.size()+1); i++)
+		size_t found = input.find(";");
+		int i = 0;
+		while((found != std::string::npos) && (i < 50))
 		{
-			// fix this! I think as is, it will not move on from first position
-			size_t found = input.find(";");
-			if(found != std::string::npos)
-				connectors[i] = 1;
+			size_t pos = found + 1;
+			connectors[i] = 1;
+			i++;
+			found = input.find(";",pos);
 		}
 		///--- parse user input ---///
 		char* tmp_cstr = new char[input.size()+1];
