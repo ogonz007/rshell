@@ -7,10 +7,12 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <string.h>
+#include <vector>
+#include <algorithm>
 
-#define SEMI_CON 1
-#define AND_CON 2
-#define OR_CON 3
+#define SEMI_CON 1.0
+#define AND_CON 2.0
+#define OR_CON 3.0
 
 using namespace std;
 
@@ -35,24 +37,33 @@ int main()
 	char delims[] = {';','|','&'};
 //	int statementPos = 0;
 //	bool good = 1;
-	int connectors[50] = {0}; 
-	for(int i = 0; i < 50; i++)
-		connectors[i] = 0;
 
 	while(1)
 	{
-		
 		printPrompt();
 		string input = getCmdLine();
+		vector<double> connectors;
 		///--- search for connector types ---///
-		size_t found = input.find(";");
-		int i = 0;
-		while((found != std::string::npos) && (i < 50))
+		for(unsigned int i = 0; i < sizeof(delims); i++)
 		{
-			size_t pos = found + 1;
-			connectors[i] = 1;
-			i++;
-			found = input.find(";",pos);
+			size_t found = input.find(delims[i]);
+			while((found != std::string::npos))
+			{
+				size_t pos = found + 1;
+				//cout << "input.at(" << found << ") = " << input.at(found) << endl;
+				if(input.at(found) == ';')
+					connectors.push_back(found + (SEMI_CON/10));
+				else if(input.at(found) == '&')
+					connectors.push_back(found + (AND_CON/10));
+				else if(input.at(found) == '|')
+					connectors.push_back(found + (OR_CON/10));
+				found = input.find(delims[i],pos);
+			}
+		}
+		sort(connectors.begin(),connectors.end());
+		for(unsigned int i = 0; i < connectors.size(); i++)
+		{
+			cout << "connectors[" << i << "] = " << connectors.at(i) << endl;
 		}
 		///--- parse user input ---///
 		char* tmp_cstr = new char[input.size()+1];
