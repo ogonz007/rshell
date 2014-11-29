@@ -1,14 +1,14 @@
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <algorithm>
 #include <iostream>
-#include <string>
+#include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <string.h>
+#include <string>
 #include <vector>
-#include <algorithm>
 
 #define SEMI_CON 1.0
 #define AND_CON 2.0
