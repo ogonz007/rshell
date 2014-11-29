@@ -61,10 +61,10 @@ int main()
 			}
 		}
 		sort(connectors.begin(),connectors.end());
-		for(unsigned int i = 0; i < connectors.size(); i++)
+		/*for(unsigned int i = 0; i < connectors.size(); i++)
 		{
 			cout << "connectors[" << i << "] = " << connectors.at(i) << endl;
-		}
+		}*/
 		///--- parse user input ---///
 		char* tmp_cstr = new char[input.size()+1];
 		char* saveCstr;
@@ -75,20 +75,19 @@ int main()
 		
 		strcpy(tmp_cstr,input.c_str());
 
-
 		char* cstr = strtok_r(tmp_cstr,delims,&saveCstr);
 
 		while(cstr != '\0')
 		{
 			if(strcmp(cstr,"exit") == 0)
-				{
-					exit(0);
-				}
+			{
+				exit(0);
+			}
 		
 			pid_t pid = fork();
 			if(pid == -1)
 			{
-				perror("Error with fork().");
+				perror("Error with fork()\n");
 				exit(1);
 			}
 			else if(pid == 0)
@@ -117,11 +116,11 @@ int main()
 				{
 					exit(0);;
 				}
-
+				/* ADD IF STATEMENT HERE THAT WILL CHECK FOR && AND || SUCCESS BEFORE EXECVP*/
 				int r = execvp(argv[0],argv);
 				if(r == -1)
 				{
-					perror("error with execvp");
+					perror("error with execvp\n");
 					exit(1);
 				}
 				delete []argv;
