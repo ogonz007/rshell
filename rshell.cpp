@@ -18,6 +18,7 @@
 
 #define STD_IN 4.0
 #define STD_OUT 5.0
+#define APPEND 6.0
 
 using namespace std;
 
@@ -66,8 +67,13 @@ int main()
 					connectors.push_back(found + (OR_CON/10));
 					pos += 1;
 				}
-				else if((input.at(found) == '>'))
+				else if((input.at(found) == '>') && (input.at(found + 1) != '>'))
 					connectors.push_back(found + (STD_OUT/10));
+				else if((input.at(found) == '>') && (input.at(found + 1) == '>'))
+				{
+					connectors.push_back(found + (APPEND/10));
+					pos += 1;
+				}
 				else if((input.at(found) == '<'))
 					connectors.push_back(found + (STD_IN/10));
 				found = input.find(symbols[i],pos);
@@ -97,6 +103,10 @@ int main()
 		{
 			bool in = 0;
 			bool out = 0;
+			bool app = 0;
+			//cout << "right before connecotrs.at(statementPos)" << endl;
+			//cout << "statementPos = " << statementPos << endl;
+			//cout << "connectors.size() = " << connectors.size() << endl;
 			int connector = (connectors.at(statementPos) * 10);
 			connector = connector%10;
 			if(statementPos == 0)
@@ -119,8 +129,9 @@ int main()
 			else if((connector == 3) && (prev_connector == 2) && (good == 1))
 				good = 0;
 
+			unsigned int size_compare = statementPos + 1;
 			///--- checking for io rediredtion ---///
-			if(connectors.size() > 1)
+			if(connectors.size() > size_compare)
 			{
 				int redir_connector = (connectors.at(statementPos+1) * 10);
 				redir_connector = redir_connector%10;
@@ -129,6 +140,8 @@ int main()
 					in = 1;
 				if((redir_connector == 5))
 					out = 1;
+				if((redir_connector == 6))
+					app = 1;
 				//cout << "in = " << in << endl;
 				//cout << "out = " << out << endl;
 			}
@@ -157,7 +170,7 @@ int main()
 					}
 					
 					argv[0] = strtok(cstr," ");
-					cout << "argv[0] = " << argv[0] << endl;
+					//cout << "argv[0] = " << argv[0] << endl;
 					unsigned int j = 1;
 				
 					while((j < (input.size()+1)) )
@@ -165,16 +178,14 @@ int main()
 						argv[j] = strtok(NULL," ");
 						j++;
 					}
-					int fd_in;
 					if(in)
 					{
-						cout << "argv[1] = " << argv[1] << endl;
-						cout << "argv[2] = " << argv[2] << endl;
-						string redir_input = "./";
-						redir_input = redir_input + argv[2];
-						cout << "redir_input = " << redir_input << endl;
+						//cout << "argv[1] = " << argv[1] << endl;
+						//cout << "argv[2] = " << argv[2] << endl;
+						string redir_input = argv[2];
+						//cout << "redir_input = " << redir_input << endl;
 
-						fd_in = open(redir_input.c_str(),O_RDONLY,0);
+						int fd_in = open(redir_input.c_str(),O_RDONLY,0);
 						if(fd_in == -1)
 						{perror("open failed\n"); exit(1);}
 						
@@ -182,16 +193,19 @@ int main()
 						int dup_err = dup2(fd_in,0);
 						if(dup_err == -1)
 						{perror("dup2 failed\n"); exit(1);}
-						close(0);
-					/*	int close_err = close(fd_in);
+						int close_err = close(fd_in);
 						if(close_err == -1)
-						{perror("close failed\n"); exit(1);}*/
+						{perror("close failed\n"); exit(1);}
+						argv[1] = '\0';
+						argv[2] = '\0';
+						argv[3] = '\0';
+						in = 0;
 					}
 
 					if(out)
 					{
-						cout << "argv[1] = " << argv[1] << endl;
-						cout << "argv[2] = " << argv[2] << endl;
+						//cout << "argv[1] = " << argv[1] << endl;
+						//cout << "argv[2] = " << argv[2] << endl;
 						string redir_output = argv[2];
 						int fd_out = creat(redir_output.c_str(),0644);
 						if(fd_out == -1)
@@ -207,6 +221,13 @@ int main()
 						argv[1] = '\0';
 						argv[2] = '\0';
 						argv[3] = '\0';
+						out = 0;
+					}
+
+					if(app)
+					{
+						cout << "app = " << app << endl;
+						app = 0;
 					}
 					///--- checking for commenting using # sign ---///
 					if((*argv[0] == '#'))
@@ -223,7 +244,7 @@ int main()
 					}
 					good = 1;
 					delete []argv;
-								}
+				}
 				else if(pid > 0)
 				{
 					// parent process
@@ -235,6 +256,9 @@ int main()
 					}
 				}
 			}
+			in = 0;
+			out = 0;
+			app = 0;
 			cstr = strtok_r('\0',delims,&saveCstr);
 			prev_connector = connector;
 			statementPos++;
