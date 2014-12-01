@@ -134,17 +134,28 @@ int main()
 			///--- checking for io rediredtion ---///
 			if(connectors.size() > size_compare)
 			{
-				int redir_connector = (connectors.at(statementPos+1) * 10);
+				int redir_connector = (connectors.at(size_compare) * 10);
 				redir_connector = redir_connector%10;
 				//cout << "redir_connector = " << redir_connector << endl;
 				if((redir_connector == 4))
 					in = 1;
 				if((redir_connector == 5))
 					out = 1;
+				if(connectors.size() > (size_compare+1))
+				{
+					int redir_connector2 = (connectors.at(size_compare+1) * 10);
+					redir_connector2 = redir_connector2%10;
+
+					if((redir_connector == 4) && (redir_connector2 == 5))
+					{
+						in = 1;
+						out = 1;
+					}
+				}
 				if((redir_connector == 6))
 					app = 1;
-				//cout << "in = " << in << endl;
-				//cout << "out = " << out << endl;
+				cout << "in = " << in << endl;
+				cout << "out = " << out << endl;
 			}
 			if(good)
 			{
@@ -188,7 +199,17 @@ int main()
 					{
 						//cout << "argv[1] = " << argv[1] << endl;
 						//cout << "argv[2] = " << argv[2] << endl;
-						string redir_input = argv[2];
+						unsigned int counter = 0;
+						while(*argv[counter] != '<')
+						{
+							counter++;
+						}
+						
+						string redir_input = argv[counter+1];
+						cout << "redir_input = " << redir_input << endl;
+						argv[counter] = '\0';
+						argv[counter+1] = '\0';
+						//string redir_input = argv[2];
 						//cout << "redir_input = " << redir_input << endl;
 
 						int fd_in = open(redir_input.c_str(),O_RDONLY,0);
@@ -202,9 +223,9 @@ int main()
 						int close_err = close(fd_in);
 						if(close_err == -1)
 						{perror("close failed\n"); exit(1);}
-						argv[1] = '\0';
-						argv[2] = '\0';
-						argv[3] = '\0';
+						//argv[1] = '\0';
+						//argv[2] = '\0';
+						//argv[3] = '\0';
 						in = 0;
 					}
 
