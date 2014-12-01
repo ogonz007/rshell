@@ -95,6 +95,7 @@ int main()
 		strcpy(tmp_cstr,input.c_str());
 
 		char* cstr = strtok_r(tmp_cstr,delims,&saveCstr);
+		//cout << "saveCstr = " << *saveCstr << endl;
 		int statementPos = 0;
 		bool good = 1;
 		int prev_connector = 0;
@@ -163,7 +164,8 @@ int main()
 					/****** child process ******/
 					
 					char** argv = new char*[input.size()+1];
-						
+					char** saveInput = new char*[input.size()+1];
+					//strcpy(saveInput,cstr);
 					for(unsigned int i = 0; i < (input.size()+1); i++)
 					{
 						argv[i] = '\0';
@@ -171,6 +173,8 @@ int main()
 					
 					argv[0] = strtok(cstr," ");
 					//cout << "argv[0] = " << argv[0] << endl;
+					/*for(unsigned int i = 0; saveInput[i] != '\0'; i++)	
+						cout << "saveInput[" << i << "] = " << saveInput[i] << endl;*/
 					unsigned int j = 1;
 				
 					while((j < (input.size()+1)) )
@@ -178,6 +182,8 @@ int main()
 						argv[j] = strtok(NULL," ");
 						j++;
 					}
+					for(unsigned int i = 0; argv[i] != '\0'; i++)
+						saveInput[i] = argv[i];
 					if(in)
 					{
 						//cout << "argv[1] = " << argv[1] << endl;
@@ -204,8 +210,6 @@ int main()
 
 					if(out)
 					{
-						//cout << "argv[1] = " << argv[1] << endl;
-						//cout << "argv[2] = " << argv[2] << endl;
 						unsigned int counter = 0;
 						while(*argv[counter] != '>')
 						{
@@ -213,6 +217,13 @@ int main()
 						}
 						
 						string redir_output = argv[counter+1];
+						cout << "redir_output = " << redir_output << endl;
+						argv[counter] = '\0';
+						argv[counter+1] = '\0';
+
+						for(unsigned int i = 0; argv[i] != '\0'; i++)
+							cout << "argv[" << i << "] = " << argv[i];
+						
 						cout << "redir_output = " << redir_output << endl;
 
 						int fd_out = creat(redir_output.c_str(),0644);
@@ -226,22 +237,7 @@ int main()
 						int close_err2 = close(fd_out);
 						if(close_err2 == -1)
 						{perror("close failed\n"); exit(1);}
-
-						/*for(unsigned int i = 1; i < input.size(); i++)
-						{
-							if(argv[i][1] != '-')
-								argv[i] = '\0';
-						}*/
-						/*unsigned int count = input.size();
-						while(*argv[count] != '>')
-						{
-							argv[count] = '\0';
-							--count;
-						}
-						argv[count] = '\0';*/
-					//	argv[1] = '\0';
-						argv[2] = '\0';
-						argv[3] = '\0';
+											
 						out = 0;
 					}
 
@@ -265,6 +261,7 @@ int main()
 					}
 					good = 1;
 					delete []argv;
+					delete []saveInput;
 				}
 				else if(pid > 0)
 				{
