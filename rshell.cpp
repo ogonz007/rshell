@@ -192,7 +192,8 @@ int main()
 					{
 						cout << "argv[1] = " << argv[1] << endl;
 						cout << "argv[2] = " << argv[2] << endl;
-						/*int fd_out = creat(redir_output,0644);
+						string redir_output = argv[2];
+						int fd_out = creat(redir_output.c_str(),0644);
 						if(fd_out == -1)
 						{perror("creat failed\n"); exit(1);}
 						
@@ -202,7 +203,10 @@ int main()
 						
 						int close_err2 = close(fd_out);
 						if(close_err2 == -1)
-						{perror("close failed\n"); exit(1);}*/
+						{perror("close failed\n"); exit(1);}
+						argv[1] = '\0';
+						argv[2] = '\0';
+						argv[3] = '\0';
 					}
 					///--- checking for commenting using # sign ---///
 					if((*argv[0] == '#'))
@@ -219,13 +223,7 @@ int main()
 					}
 					good = 1;
 					delete []argv;
-					if(in)
-					{
-						int close_err = close(fd_in);
-						if(close_err == -1)
-						{perror("close failed\n"); exit(1);}
-					}
-				}
+								}
 				else if(pid > 0)
 				{
 					// parent process
