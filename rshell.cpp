@@ -206,7 +206,15 @@ int main()
 					{
 						//cout << "argv[1] = " << argv[1] << endl;
 						//cout << "argv[2] = " << argv[2] << endl;
-						string redir_output = argv[2];
+						unsigned int counter = 0;
+						while(*argv[counter] != '>')
+						{
+							counter++;
+						}
+						
+						string redir_output = argv[counter+1];
+						cout << "redir_output = " << redir_output << endl;
+
 						int fd_out = creat(redir_output.c_str(),0644);
 						if(fd_out == -1)
 						{perror("creat failed\n"); exit(1);}
@@ -218,7 +226,20 @@ int main()
 						int close_err2 = close(fd_out);
 						if(close_err2 == -1)
 						{perror("close failed\n"); exit(1);}
-						argv[1] = '\0';
+
+						/*for(unsigned int i = 1; i < input.size(); i++)
+						{
+							if(argv[i][1] != '-')
+								argv[i] = '\0';
+						}*/
+						/*unsigned int count = input.size();
+						while(*argv[count] != '>')
+						{
+							argv[count] = '\0';
+							--count;
+						}
+						argv[count] = '\0';*/
+					//	argv[1] = '\0';
 						argv[2] = '\0';
 						argv[3] = '\0';
 						out = 0;
