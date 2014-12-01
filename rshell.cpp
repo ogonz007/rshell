@@ -154,8 +154,8 @@ int main()
 				}
 				if((redir_connector == 6))
 					app = 1;
-				cout << "in = " << in << endl;
-				cout << "out = " << out << endl;
+				//cout << "in = " << in << endl;
+				//cout << "out = " << out << endl;
 			}
 			if(good)
 			{
@@ -197,6 +197,7 @@ int main()
 						saveInput[i] = argv[i];
 					if(in)
 					{
+						//cout << "in if(in) \n";
 						//cout << "argv[1] = " << argv[1] << endl;
 						//cout << "argv[2] = " << argv[2] << endl;
 						unsigned int counter = 0;
@@ -206,9 +207,9 @@ int main()
 						}
 						
 						string redir_input = argv[counter+1];
-						cout << "redir_input = " << redir_input << endl;
-						argv[counter] = '\0';
-						argv[counter+1] = '\0';
+						//cout << "redir_input = " << redir_input << endl;
+						argv[counter] = argv[counter+2];
+						argv[counter+1] = argv[counter+3];
 						//string redir_input = argv[2];
 						//cout << "redir_input = " << redir_input << endl;
 
@@ -226,27 +227,35 @@ int main()
 						//argv[1] = '\0';
 						//argv[2] = '\0';
 						//argv[3] = '\0';
+						/*for(unsigned int i = 0; i < input.size(); i++)
+						{
+							if(argv[i] != '\0')
+								cout << "argv[" << i << "] = " << argv[i] << endl;
+						}*/
 						in = 0;
 					}
 
 					if(out)
 					{
-						unsigned int counter = 0;
-						while(*argv[counter] != '>')
+						//cout << "in if(out) \n";
+						unsigned int counter2 = 0;
+						while(*argv[counter2] != '>')
 						{
-							counter++;
+							counter2++;
 						}
+						//cout << "argv[" << counter2 << "] = " << argv[counter2+1] << endl;
 						
-						string redir_output = argv[counter+1];
-						cout << "redir_output = " << redir_output << endl;
-						argv[counter] = '\0';
-						argv[counter+1] = '\0';
+						string redir_output = argv[counter2+1];
+						//cout << "redir_output = " << redir_output << endl;
+						argv[counter2] = '\0';
+						argv[counter2+1] = '\0';
 
-						for(unsigned int i = 0; argv[i] != '\0'; i++)
-							cout << "argv[" << i << "] = " << argv[i];
-						
-						cout << "redir_output = " << redir_output << endl;
+						/*for(unsigned int i = 0; argv[i] != '\0'; i++)
+							cout << "argv[" << i << "] = " << argv[i] << endl;
+						*/
+						//cout << "redir_output = " << redir_output << endl;
 
+						if(out){
 						int fd_out = creat(redir_output.c_str(),0644);
 						if(fd_out == -1)
 						{perror("creat failed\n"); exit(1);}
@@ -258,7 +267,7 @@ int main()
 						int close_err2 = close(fd_out);
 						if(close_err2 == -1)
 						{perror("close failed\n"); exit(1);}
-											
+						}					
 						out = 0;
 					}
 
