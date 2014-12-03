@@ -331,7 +331,6 @@ int main()
 						tmpPathList = tmpPathList + "/" + tmpCmd;
 						//cout << "tmpPathList = " << tmpPathList << endl;
 						execv(tmpPathList.c_str(),argv);
-						//execvp(argv[0],argv);
 					}
 					if(r == -1)
 					{
