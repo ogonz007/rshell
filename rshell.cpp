@@ -6,6 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 #include <fcntl.h>
 #include <errno.h>
@@ -19,13 +20,17 @@
 #define STD_IN 4.0
 #define STD_OUT 5.0
 #define APPEND 6.0
+#define PIPE 7.0
 
 using namespace std;
 
 ///--- prints the rshell prompt (e.g. $) ---///
 void printPrompt()
 {
-	cout << "$ ";
+	char buf[1024];
+	if(!getcwd(buf,1024))
+		perror("getcwd failed");
+	cout << buf << " $ ";
 	return;
 }
 
@@ -42,6 +47,21 @@ int main()
 {
 	char delims[] = {';','|','&'};
 	char symbols[] = {';','|','&','>','<'};
+
+	///--- PARSING THE PATH ---///
+	char* tmpPath = getenv("PATH");
+	char pathDelims[] = {':'};
+
+	char** pathList = new char*[20];
+	for(unsigned int i = 0; i < 20; i++)
+		pathList[i] = '\0';
+
+	pathList[0] = strtok(tmpPath,pathDelims);
+	for(unsigned int i = 0; i < 20; i++)
+		pathList[i] = strtok(NULL,pathDelims);
+	/*for(unsigned int i = 0; pathList[i] != NULL; i++)
+		cout << "pathList[" << i << "] = " << pathList[i] << endl;*/
+	///--- PARSING THE PATH DONE ---///
 
 	while(1)
 	{
@@ -67,6 +87,8 @@ int main()
 					connectors.push_back(found + (OR_CON/10));
 					pos += 1;
 				}
+				else if((input.at(found) == '|') && (input.at(found + 1) != '|'))
+					connectors.push_back(found + (PIPE/10));
 				else if((input.at(found) == '>') && (input.at(found + 1) != '>'))
 					connectors.push_back(found + (STD_OUT/10));
 				else if((input.at(found) == '>') && (input.at(found + 1) == '>'))
@@ -105,6 +127,7 @@ int main()
 			bool in = 0;
 			bool out = 0;
 			bool app = 0;
+			bool pip = 0;
 			//cout << "right before connecotrs.at(statementPos)" << endl;
 			//cout << "statementPos = " << statementPos << endl;
 			//cout << "connectors.size() = " << connectors.size() << endl;
@@ -129,6 +152,8 @@ int main()
 				good = 1;
 			else if((connector == 3) && (prev_connector == 2) && (good == 1))
 				good = 0;
+			else if((connector == 7))
+				pip = 1;
 
 			unsigned int size_compare = statementPos + 1;
 			///--- checking for io rediredtion ---///
@@ -157,13 +182,22 @@ int main()
 				//cout << "in = " << in << endl;
 				//cout << "out = " << out << endl;
 			}
+
 			if(good)
 			{
 				if(strcmp(cstr,"exit") == 0)
 				{
 					exit(0);
 				}
-			
+				
+				int fd[2];
+				if(pip)
+				{
+					int pipe_err = pipe(fd);
+					if(pipe_err == -1)
+					{perror("pipe failed"); exit(1);}
+				}
+				
 				pid_t pid = fork();
 				if(pid == -1)
 				{
@@ -184,8 +218,8 @@ int main()
 					
 					argv[0] = strtok(cstr," ");
 					//cout << "argv[0] = " << argv[0] << endl;
-					/*for(unsigned int i = 0; saveInput[i] != '\0'; i++)	
-						cout << "saveInput[" << i << "] = " << saveInput[i] << endl;*/
+					for(unsigned int i = 0; saveInput[i] != '\0'; i++)	
+						cout << "saveInput[" << i << "] = " << saveInput[i] << endl;
 					unsigned int j = 1;
 				
 					while((j < (input.size()+1)) )
@@ -193,8 +227,8 @@ int main()
 						argv[j] = strtok(NULL," ");
 						j++;
 					}
-					for(unsigned int i = 0; argv[i] != '\0'; i++)
-						saveInput[i] = argv[i];
+					/*for(unsigned int i = 0; argv[i] != '\0'; i++)
+						saveInput[i] = argv[i];*/
 					if(in)
 					{
 						//cout << "in if(in) \n";
@@ -217,16 +251,12 @@ int main()
 						if(fd_in == -1)
 						{perror("open failed\n"); exit(1);}
 						
-						//int dup_err = dup2(fd_in,STDIN_FILENO);
 						int dup_err = dup2(fd_in,0);
 						if(dup_err == -1)
 						{perror("dup2 failed\n"); exit(1);}
 						int close_err = close(fd_in);
 						if(close_err == -1)
 						{perror("close failed\n"); exit(1);}
-						//argv[1] = '\0';
-						//argv[2] = '\0';
-						//argv[3] = '\0';
 						/*for(unsigned int i = 0; i < input.size(); i++)
 						{
 							if(argv[i] != '\0')
@@ -281,27 +311,70 @@ int main()
 					{
 						exit(0);;
 					}
+
+					if(pip)
+					{
+						int dup2_err = dup2(fd[1],1);
+						if(dup2_err == -1)
+						{perror("dup2 failed"); exit(1);}
+
+						int close_err = close(fd[0]);
+						if(close_err == -1)
+						{perror("close failed");exit(1);}
+					}
 					
-					int r = execvp(argv[0],argv);
+					int r = 0;
+					for(unsigned int counter = 0; counter < 18; counter++)
+					{
+						string tmpPathList = pathList[counter];
+						string tmpCmd = argv[0];
+						tmpPathList = tmpPathList + "/" + tmpCmd;
+						//cout << "tmpPathList = " << tmpPathList << endl;
+						execv(tmpPathList.c_str(),argv);
+						//execvp(argv[0],argv);
+					}
 					if(r == -1)
 					{
-						perror("error with execvp\n");
 						good = 0;
-						exit(1);
+						perror("error with execvp");
 					}
-					good = 1;
 					delete []argv;
 					delete []saveInput;
+					exit(1);
+					
 				}
 				else if(pid > 0)
 				{
 					// parent process
+					/*int saveSTDIN = dup(0);
+					if(saveSTDIN == -1)
+					{perror("dup failed");exit(1);}
+
+					if(pip)
+					{
+						int dup2_err2 = dup2(fd[0],0);
+						if(dup2_err2 == -1)
+						{perror("dup2 failed");exit(1);}
+
+						int close_err2 = close(fd[1]);
+						if(close_err2 == -1)
+						{perror("close failed");exit(1);}
+					}*/
+					
 					int err = wait(NULL);
 					if(err == -1)
 					{
-						perror("error with wait in parent process\n");
+						perror("error with wait in parent process");
 						exit(1);
 					}
+					/*int exec_err = execvp(argv[0],argv);
+					if(exec_err == -1)
+					{perror("execvp in parent failed");exit(1);}
+				
+					int dup2_err3 = dup2(saveSTDIN,0);
+					if(dup2_err3 == -1)
+					{perror("dup2 failed");exit(1);}*/
+
 				}
 			}
 			in = 0;
@@ -313,6 +386,8 @@ int main()
 		}
 		delete []tmp_cstr;
 	}
-
+	for(unsigned int i = 0; i < 20; i++)
+		pathList[i] = NULL;
+	delete []pathList;
 	return 0;
 }
