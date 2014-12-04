@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <iostream>
 #include <string.h>
+#include <signal.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
@@ -36,9 +37,6 @@ void getPath(string &currDir)
 ///--- prints the rshell prompt (e.g. $) ---///
 void printPrompt(string &currDir)
 {
-	//char buf[1024];
-	//if(!getcwd(buf,1024))
-	//	perror("getcwd failed");
 	cout << currDir << " $ ";
 	return;
 }
@@ -51,9 +49,23 @@ string getCmdLine()
 	return str;
 }
 
+static void handler(int signum)
+{
+	signal(SIGINT,handler);
+	return;
+}
 
 int main()
 {
+	struct sigaction sa;
+	sa.sa_handler = handler;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = SA_RESTART;
+
+	if((sigaction(SIGINT,&sa,NULL)) == -1)
+	{perror("sigaction failed");exit(1);}
+
+
 	string currDir = "";
 	char delims[] = {';','|','&'};
 	char symbols[] = {';','|','&','>','<'};
@@ -69,10 +81,8 @@ int main()
 	pathList[0] = strtok(tmpPath,pathDelims);
 	for(unsigned int i = 0; i < 20; i++)
 		pathList[i] = strtok(NULL,pathDelims);
-	/*for(unsigned int i = 0; pathList[i] != NULL; i++)
-		cout << "pathList[" << i << "] = " << pathList[i] << endl;*/
 	///--- PARSING THE PATH DONE ---///
-
+	
 	getPath(currDir);
 
 	while(1)
@@ -80,6 +90,7 @@ int main()
 		printPrompt(currDir);
 		string input = getCmdLine();
 		vector<double> connectors(1);
+	
 		///--- search for connector types ---///
 		for(unsigned int i = 0; i < sizeof(symbols); i++)
 		{
@@ -114,10 +125,8 @@ int main()
 			}
 		}
 		sort(connectors.begin(),connectors.end());
-		
-		/*for(unsigned int i = 0; i < connectors.size(); i++)
-			cout << "connectors.at(" << i << ") = " << connectors.at(i) << endl;*/
-
+		///--- done searching for connector types ---///
+	
 		///--- parse user input ---///
 		char* tmp_cstr = new char[input.size()+1];
 		char* saveCstr;
@@ -129,7 +138,6 @@ int main()
 		strcpy(tmp_cstr,input.c_str());
 
 		char* cstr = strtok_r(tmp_cstr,delims,&saveCstr);
-		//cout << "saveCstr = " << *saveCstr << endl;
 		int statementPos = 0;
 		bool good = 1;
 		int prev_connector = 0;
@@ -141,14 +149,12 @@ int main()
 			bool app = 0;
 			bool pip = 0;
 			bool cd_found = 0;
-			//cout << "right before connecotrs.at(statementPos)" << endl;
-			//cout << "statementPos = " << statementPos << endl;
-			//cout << "connectors.size() = " << connectors.size() << endl;
+
+			///--- checking for conditionals ---///
 			int connector = (connectors.at(statementPos) * 10);
 			connector = connector%10;
 			if(statementPos == 0)
 				good = 1;
-			///--- checking for conditionals ---///
 			else if(connector == 1)
 				good = 1;
 			else if((connector == 2) && (prev_connector == 2) && (good == 1))
@@ -168,13 +174,13 @@ int main()
 			else if((connector == 7))
 				pip = 1;
 
-			unsigned int size_compare = statementPos + 1;
 			///--- checking for io rediredtion ---///
+			unsigned int size_compare = statementPos + 1;
 			if(connectors.size() > size_compare)
 			{
 				int redir_connector = (connectors.at(size_compare) * 10);
 				redir_connector = redir_connector%10;
-				//cout << "redir_connector = " << redir_connector << endl;
+
 				if((redir_connector == 4))
 					in = 1;
 				if((redir_connector == 5))
@@ -192,26 +198,24 @@ int main()
 				}
 				if((redir_connector == 6))
 					app = 1;
-				//cout << "in = " << in << endl;
-				//cout << "out = " << out << endl;
 			}
 
 			if(good)
 			{
+				///--- handle exit ---///
 				if(strcmp(cstr,"exit") == 0)
 				{
 					exit(0);
 				}
+
+				///--- setting commands in argv ---///
 				char** argv = new char*[input.size()+1];
-				char** saveInput = new char*[input.size()+1];
-				//strcpy(saveInput,cstr);
 				for(unsigned int i = 0; i < (input.size()+1); i++)
 				{
 					argv[i] = '\0';
 				}
 				
 				argv[0] = strtok(cstr," ");
-				//cout << "argv[0] = " << argv[0] << endl;
 				unsigned int j = 1;
 				while((j < (input.size()+1)) )
 				{
@@ -219,9 +223,9 @@ int main()
 					j++;
 				}
 
+				///--- handel cd ---///
 				if(strcmp(argv[0],"cd") == 0)
 				{
-					//cout << "cd found" << endl;
 					cd_found = 1;
 					
 					if(argv[1] == '\0')
@@ -230,14 +234,12 @@ int main()
 						currDir = homePath;
 						if(chdir(currDir.c_str()) != 0)
 						{perror("chdir failed1");exit(1);}
-						//cout << "currDir = " << currDir << endl;
 					}
 
 					else
 					{
-						//cout << "currDir = " << currDir << endl;
 						string newPath = currDir;
-						newPath = newPath + "/" + argv[1];// + "/";
+						newPath = newPath + "/" + argv[1];
 						
 						struct stat stat_buf;
 						if(stat(newPath.c_str(),&stat_buf) != -1)
@@ -252,7 +254,6 @@ int main()
 								getcwd(newBuf,1024);
 
 								currDir = newBuf;
-								//cout << "currDir = " << currDir << endl;
 							}
 
 							else if((S_ISDIR(stat_buf.st_mode) == false))
@@ -263,21 +264,8 @@ int main()
 						else
 						{perror("stat failed");exit(1);}
 
-						/*if(chdir(newPath.c_str()) != 0)
-						{perror("chdir failed2");exit(1);}
 
-						char newBuf[1024];
-						getcwd(newBuf,1024);
-
-						currDir = newBuf;
-						cout << "currDir = " << currDir << endl;*/
 					}
-					//cout << "currDir = " << currDir << endl;
-					//cout << "newBuf = " << newBuf << endl;
-					
-					//for(unsigned int i = 0; argv[i] != '\0'; i++)	
-					//	cout << "argv[" << i << "] = " << argv[i] << endl;
-
 				}
 				if(!cd_found)
 				{
@@ -298,33 +286,9 @@ int main()
 					else if(pid == 0)
 					{
 						/****** child process ******/
-						/*
-						char** argv = new char*[input.size()+1];
-						char** saveInput = new char*[input.size()+1];
-						//strcpy(saveInput,cstr);
-						for(unsigned int i = 0; i < (input.size()+1); i++)
-						{
-							argv[i] = '\0';
-						}
 						
-						argv[0] = strtok(cstr," ");
-						//cout << "argv[0] = " << argv[0] << endl;
-						for(unsigned int i = 0; saveInput[i] != '\0'; i++)	
-							cout << "saveInput[" << i << "] = " << saveInput[i] << endl;
-						unsigned int j = 1;
-					
-						while((j < (input.size()+1)) )
-						{
-							argv[j] = strtok(NULL," ");
-							j++;
-						}*/
-						/*for(unsigned int i = 0; argv[i] != '\0'; i++)
-							saveInput[i] = argv[i];*/
 						if(in)
 						{
-							//cout << "in if(in) \n";
-							//cout << "argv[1] = " << argv[1] << endl;
-							//cout << "argv[2] = " << argv[2] << endl;
 							unsigned int counter = 0;
 							while(*argv[counter] != '<')
 							{
@@ -332,11 +296,8 @@ int main()
 							}
 							
 							string redir_input = argv[counter+1];
-							//cout << "redir_input = " << redir_input << endl;
 							argv[counter] = argv[counter+2];
 							argv[counter+1] = argv[counter+3];
-							//string redir_input = argv[2];
-							//cout << "redir_input = " << redir_input << endl;
 
 							int fd_in = open(redir_input.c_str(),O_RDONLY,0);
 							if(fd_in == -1)
@@ -348,17 +309,12 @@ int main()
 							int close_err = close(fd_in);
 							if(close_err == -1)
 							{perror("close failed\n"); exit(1);}
-							/*for(unsigned int i = 0; i < input.size(); i++)
-							{
-								if(argv[i] != '\0')
-									cout << "argv[" << i << "] = " << argv[i] << endl;
-							}*/
+							
 							in = 0;
 						}
 
 						if(out)
 						{
-							//cout << "in if(out) \n";
 							unsigned int counter2 = 0;
 							while(*argv[counter2] != '>')
 							{
@@ -370,11 +326,6 @@ int main()
 							//cout << "redir_output = " << redir_output << endl;
 							argv[counter2] = '\0';
 							argv[counter2+1] = '\0';
-
-							/*for(unsigned int i = 0; argv[i] != '\0'; i++)
-								cout << "argv[" << i << "] = " << argv[i] << endl;
-							*/
-							//cout << "redir_output = " << redir_output << endl;
 
 							if(out){
 							int fd_out = creat(redir_output.c_str(),0644);
@@ -429,7 +380,6 @@ int main()
 							perror("error with execv");
 						}
 						delete []argv;
-						delete []saveInput;
 						exit(1);
 						
 					}
@@ -468,7 +418,6 @@ int main()
 					}
 				}
 				delete []argv;
-				delete []saveInput;
 			}
 			in = 0;
 			out = 0;
