@@ -37,7 +37,7 @@ cp.cpp
 exec.script
 ls.script
 cp.script
-io_redir.script
+piping.script
 signals.script
 
 How to run file
@@ -51,22 +51,22 @@ Once you have clones the directory to your local machine, follow the directions 
 	For ls:
 		cd rshell
 		make
-		bin/ls <flag>
+		bin/ls
 	For cp:
 		cd rshell
 		make
-		bin/cp <file1> <file2>
+		bin/cp
 
 Rshell Program Overview:
-	This program was written to implement a simple version of a command shell called rshell.
+	This program was written to implement a very simple version of a command shell called rshell.
 	Rshell can support simple command inputs similar to those used in BASH command shell.
-	It makes commands call through the use of the execv function and uses a built in exit and cp 
+	It makes commands call through the use of the execv function and uses a built in exit and cd 
 	commands to shutdown the program and move between directories respective. This shell can also 
 	handle I/O redirection and ^C signal will interrupt processes but will not exit the program.
 
 Rshell Bugs:
-	1. Piping is not currently working correctly 
-
+	1. Piping is not currently working 
+	2. combining < with >> in the same command line will give error
 
 ls Program Overview:
 	This program was written to implement the ls funtion found in unix and linux BASH command shells.
@@ -75,7 +75,6 @@ ls Program Overview:
 ls Bugs:
 	1. ls output is not properly formatted (ie. non-alphabetical, all output in one column)
 	2. -R flag is not working
-	3. passing a file to ls will output an error message
 
 
 cp Program OverView:

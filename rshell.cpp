@@ -7,12 +7,12 @@
 #include <signal.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
 #include <fcntl.h>
 #include <errno.h>
 #include <string>
 #include <vector>
+#include <pwd.h>
 
 #define SEMI_CON 1.0
 #define AND_CON 2.0
@@ -22,6 +22,9 @@
 #define STD_OUT 5.0
 #define APPEND 6.0
 #define PIPE 7.0
+#define AMP_CON 8.0
+
+pid_t id;
 
 using namespace std;
 
@@ -37,7 +40,15 @@ void getPath(string &currDir)
 ///--- prints the rshell prompt (e.g. $) ---///
 void printPrompt(string &currDir)
 {
-	cout << currDir << " $ ";
+	struct passwd* userName;
+	userName = getpwuid(getuid());
+	if(userName == '\0')
+	{perror("getpwuid failed"); exit(1);}
+
+	char hostName[32];
+	if((gethostname(hostName,sizeof(hostName))) == -1)
+	{perror("gethostname failed"); exit(1);}
+	cout << userName->pw_name << "@" << hostName << ":~" << currDir << "$ ";
 	return;
 }
 
@@ -55,6 +66,13 @@ static void handler(int signum)
 	return;
 }
 
+static void z_handler(int signum)
+{
+	if(id)
+		kill(id,SIGSTOP);
+	return;
+}
+
 int main()
 {
 	struct sigaction sa;
@@ -62,7 +80,15 @@ int main()
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_RESTART;
 
+	struct sigaction sa_z;
+	sa_z.sa_handler = z_handler;
+	sigemptyset(&sa_z.sa_mask);
+	sa_z.sa_flags = SA_RESTART;
+
 	if((sigaction(SIGINT,&sa,NULL)) == -1)
+	{perror("sigaction failed");exit(1);}
+
+	if((sigaction(SIGTSTP,&sa_z,NULL)) == -1)
 	{perror("sigaction failed");exit(1);}
 
 
@@ -72,6 +98,8 @@ int main()
 
 	///--- PARSING THE PATH ---///
 	char* tmpPath = getenv("PATH");
+	if(tmpPath == '\0')
+	{perror("getenv failed"); exit(1);}
 	char pathDelims[] = {':'};
 
 	char** pathList = new char*[20];
@@ -100,10 +128,14 @@ int main()
 				size_t pos = found + 1;
 				if(input.at(found) == ';')
 					connectors.push_back(found + (SEMI_CON/10));
-				else if((input.at(found) == '&') && (input.at(found + 1) == '&'))
+				else if((input.at(found) == '&') && (((found + 1) == input.size()) || (input.at(found + 1) == '&')))
 				{
 					connectors.push_back(found + (AND_CON/10));
 					pos += 1;
+				}
+				else if((input.at(found) == '&') && ((found + 1) == input.size()))
+				{
+					connectors.push_back(found + (AMP_CON/10));
 				}
 				else if((input.at(found) == '|') && (input.at(found + 1) == '|'))
 				{
@@ -129,7 +161,7 @@ int main()
 	
 		///--- parse user input ---///
 		char* tmp_cstr = new char[input.size()+1];
-		char* saveCstr;
+		char* saveCstr = '\0';
 		for(unsigned int i = 0; i < (input.size()+1); i++)
 		{
 			tmp_cstr[i] = '\0';
@@ -137,13 +169,15 @@ int main()
 		
 		strcpy(tmp_cstr,input.c_str());
 
-		char* cstr = strtok_r(tmp_cstr,delims,&saveCstr);
+		char* cstr = '\0'; 
+		cstr = strtok_r(tmp_cstr,delims,&saveCstr);
 		int statementPos = 0;
 		bool good = 1;
 		int prev_connector = 0;
 
 		while(cstr != '\0')
 		{
+			//cout << "good = " << good << endl;
 			bool in = 0;
 			bool out = 0;
 			bool app = 0;
@@ -173,6 +207,8 @@ int main()
 				good = 0;
 			else if((connector == 7))
 				pip = 1;
+			else if((connector == 8))
+				cout << "found &" << endl;
 
 			///--- checking for io rediredtion ---///
 			unsigned int size_compare = statementPos + 1;
@@ -223,14 +259,17 @@ int main()
 					j++;
 				}
 
-				///--- handel cd ---///
+				///--- handle cd ---///
 				if(strcmp(argv[0],"cd") == 0)
 				{
 					cd_found = 1;
 					
-					if(argv[1] == '\0')
+					if((argv[1] == '\0') || (*argv[1] == '~'))
 					{
 						char* homePath = getenv("HOME");
+						if(homePath == '\0')
+						{perror("getenv failed");exit(1);}
+
 						currDir = homePath;
 						if(chdir(currDir.c_str()) != 0)
 						{perror("chdir failed1");exit(1);}
@@ -252,6 +291,8 @@ int main()
 
 								char newBuf[1024];
 								getcwd(newBuf,1024);
+								if(newBuf == '\0')
+								{perror("getcwd failed");exit(1);}
 
 								currDir = newBuf;
 							}
@@ -278,6 +319,7 @@ int main()
 					}
 					
 					pid_t pid = fork();
+					id = pid;
 					if(pid == -1)
 					{
 						perror("Error with fork()\n");
@@ -320,7 +362,8 @@ int main()
 							{
 								counter2++;
 							}
-							//cout << "argv[" << counter2 << "] = " << argv[counter2+1] << endl;
+							//cerr << "testing >" << argv[counter2][0] << argv[counter2][1] << endl;
+							//if((argv[counter2][0] == '>') && (argv[counter2][1] != '>')){
 							
 							string redir_output = argv[counter2+1];
 							//cout << "redir_output = " << redir_output << endl;
@@ -341,17 +384,52 @@ int main()
 							{perror("close failed\n"); exit(1);}
 							}					
 							out = 0;
+							//}
 						}
 
 						if(app)
 						{
-							cout << "app = " << app << endl;
-							app = 0;
+							unsigned int counter3 = 0;
+							while(*argv[counter3] != '>')
+							{
+								//cerr << "argv[" << counter3 << "] = " << argv[counter3] << endl;
+								counter3++;
+							}
+							//cerr << argv[counter3][0] << argv[counter3][1] << endl;
+							//if((argv[counter3][0] == '>') && (argv[counter3][1] == '>')){
+							
+							string redir_outAppend = argv[counter3+1];
+							//cout << "redir_output = " << redir_output << endl;
+							//argv[counter3] = '\0';
+							//argv[counter3+1] = '\0';
+							//cerr << "argv[" << counter3 << "] = " << argv[counter3] << endl;
+							while(argv[counter3] != '\0')
+							{
+								argv[counter3] = '\0';
+								counter3++;
+							}
+
+							if(app)
+							{
+								int fd_outAppend = open(redir_outAppend.c_str(),O_WRONLY | O_APPEND);
+								if(fd_outAppend == -1)
+								{perror("open failed\n"); exit(1);}
+							
+								int dup_err2 = dup2(fd_outAppend,STDOUT_FILENO);
+								if(dup_err2 == -1)
+								{perror("dup2 failed\n"); exit(1);}
+							
+								int close_err2 = close(fd_outAppend);
+								if(close_err2 == -1)
+								{perror("close failed\n"); exit(1);}
+							}					
+							app = 0;//}
 						}
-						////--- checking for commenting using # sign ---///
+
+						///--- checking for commenting using # sign ---///
 						if((*argv[0] == '#'))
 						{
-							exit(0);;
+							exit(0);
 						}
 
 						if(pip)
@@ -362,30 +440,32 @@ int main()
 
 							int close_err = close(fd[0]);
 							if(close_err == -1)
-							{perror("close failed");exit(1);}
+							{perror("close failed"); exit(1);}
 						}
 						
 						int r = 0;
-						for(unsigned int counter = 0; counter < 18; counter++)
+						for(unsigned int counter = 0; counter < 17; counter++)
 						{
 							string tmpPathList = pathList[counter];
 							string tmpCmd = argv[0];
 							tmpPathList = tmpPathList + "/" + tmpCmd;
 							//cout << "tmpPathList = " << tmpPathList << endl;
-							execv(tmpPathList.c_str(),argv);
+							r = execv(tmpPathList.c_str(),argv);
 						}
 						if(r == -1)
 						{
-							good = 0;
+							//good = 0;
 							perror("error with execv");
 						}
+						good = 0;
+						//cout << "good after error = " << good << endl;
 						delete []argv;
 						exit(1);
-						
 					}
 					else if(pid > 0)
 					{
 						// parent process
+
 						/*int saveSTDIN = dup(0);
 						if(saveSTDIN == -1)
 						{perror("dup failed");exit(1);}
@@ -401,7 +481,8 @@ int main()
 							{perror("close failed");exit(1);}
 						}*/
 						
-						int err = wait(NULL);
+						int id_stat;
+						int err = waitpid(id,&id_stat,WUNTRACED);
 						if(err == -1)
 						{
 							perror("error with wait in parent process");
@@ -414,11 +495,11 @@ int main()
 						int dup2_err3 = dup2(saveSTDIN,0);
 						if(dup2_err3 == -1)
 						{perror("dup2 failed");exit(1);}*/
-
 					}
 				}
 				delete []argv;
 			}
+			//cout << "good outside = " << good << endl;
 			in = 0;
 			out = 0;
 			app = 0;
