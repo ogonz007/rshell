@@ -1,0 +1,170 @@
+Script started on Fri 05 Dec 2014 07:54:04 PM PST
+~
+ogonz007@hammer $ cs100
+[0;91m
+===============================================================================
+|                                                                             |
+| You have enabled settings specific for cs100.                               |
+|                                                                             |
+===============================================================================
+[0m
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~[0;95m [0;36m$[0m cd cs100/HW/rshell
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m make [K
+mkdir: cannot create directory `bin': File exists
+make: *** [rshell] Error 1
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m make clean
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m make
+make: Nothing to be done for `all'.
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m ls
+checksyscalls.sh  cp  cp.cpp  input  IwantThisOne.cpp  LICENSE	ls  ls.cpp  Makefile  README-ls.md  README.md  rshell  rshell.cpp  src	tests  Timer.h
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m rm cp ls rshell
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m make
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m bin/rshell
+/class/classes/ogonz007/cs100/HW/rshell $ clear
+[H[2J/class/classes/ogonz007/cs100/HW/rshell $ ls > tmp
+/class/classes/ogonz007/cs100/HW/rshell $ cat tmp
+bin
+checksyscalls.sh
+cp.cpp
+input
+IwantThisOne.cpp
+LICENSE
+ls
+ls.cpp
+Makefile
+README-ls.md
+README.md
+rshell.cpp
+src
+tests
+Timer.h
+tmp
+/class/classes/ogonz007/cs100/HW/rshell $ echo junk > tmp
+/class/classes/ogonz007/cs100/HW/rshell $ cat < tmp
+junk
+/class/classes/ogonz007/cs100/HW/rshell $ ls -l -a > tmp2
+/class/classes/ogonz007/cs100/HW/rshell $ cat < tmp2
+total 5100
+drwx------ 6 ogonz007 classes    4096 Dec  5 19:53 .
+drwx------ 4 ogonz007 classes    4096 Nov  4 13:50 ..
+drwx------ 2 ogonz007 classes    4096 Dec  5 19:53 bin
+-rwx------ 1 ogonz007 classes    3463 Dec  4 13:06 checksyscalls.sh
+-rw------- 1 ogonz007 classes    3277 Nov 11 23:51 cp.cpp
+drwx------ 8 ogonz007 classes    4096 Dec  5 19:50 .git
+-rw------- 1 ogonz007 classes 4953699 Nov 11 23:37 input
+-rwx------ 1 ogonz007 classes    9948 Dec  5 19:32 IwantThisOne.cpp
+-rw------- 1 ogonz007 classes      99 Oct 28 10:05 LICENSE
+-rwx------ 1 ogonz007 classes   15697 Dec  5 19:53 ls
+-rw------- 1 ogonz007 classes    3231 Nov 12 00:02 ls.cpp
+-rwx------ 1 ogonz007 classes     383 Dec  5 19:49 Makefile
+-rw------- 1 ogonz007 classes    1254 Nov 11 23:37 README-ls.md
+-rw------- 1 ogonz007 classes    2099 Dec  5 19:13 README.md
+-rwx------ 1 ogonz007 classes   10678 Dec  5 19:45 rshell.cpp
+-rw------- 1 ogonz007 classes   24576 Dec  5 19:45 .rshell.cpp.swj
+-rw------- 1 ogonz007 classes   28672 Dec  5 18:42 .rshell.cpp.swk
+-rw------- 1 ogonz007 classes   16384 Dec  2 15:56 .rshell.cpp.swl
+-rw------- 1 ogonz007 classes   20480 Nov 30 18:02 .rshell.cpp.swm
+-rw------- 1 ogonz007 classes   20480 Nov 30 16:50 .rshell.cpp.swn
+-rw------- 1 ogonz007 classes   24576 Nov 30 16:35 .rshell.cpp.swo
+-rw------- 1 ogonz007 classes   12288 Nov 25 10:20 .rshell.cpp.swp
+drwx------ 2 ogonz007 classes    4096 Nov 11 23:46 src
+drwx------ 2 ogonz007 classes    4096 Dec  5 19:52 tests
+-rw------- 1 ogonz007 classes    1951 Nov  3 11:31 Timer.h
+-rw------- 1 ogonz007 classes       5 Dec  5 19:53 tmp
+-rw------- 1 ogonz007 classes       0 Dec  5 19:53 tmp2
+-rw------- 1 ogonz007 classes   12288 Nov 19 08:19 .token_test.cpp.swp
+/class/classes/ogonz007/cs100/HW/rshell $ pwd > tmp3
+/class/classes/ogonz007/cs100/HW/rshell $ ls -l -a >> tmp3
+/class/classes/ogonz007/cs100/HW/rshell $ cat < tmp3
+/class/classes/ogonz007/cs100/HW/rshell
+total 5104
+drwx------ 6 ogonz007 classes    4096 Dec  5 19:54 .
+drwx------ 4 ogonz007 classes    4096 Nov  4 13:50 ..
+drwx------ 2 ogonz007 classes    4096 Dec  5 19:53 bin
+-rwx------ 1 ogonz007 classes    3463 Dec  4 13:06 checksyscalls.sh
+-rw------- 1 ogonz007 classes    3277 Nov 11 23:51 cp.cpp
+drwx------ 8 ogonz007 classes    4096 Dec  5 19:50 .git
+-rw------- 1 ogonz007 classes 4953699 Nov 11 23:37 input
+-rwx------ 1 ogonz007 classes    9948 Dec  5 19:32 IwantThisOne.cpp
+-rw------- 1 ogonz007 classes      99 Oct 28 10:05 LICENSE
+-rwx------ 1 ogonz007 classes   15697 Dec  5 19:53 ls
+-rw------- 1 ogonz007 classes    3231 Nov 12 00:02 ls.cpp
+-rwx------ 1 ogonz007 classes     383 Dec  5 19:49 Makefile
+-rw------- 1 ogonz007 classes    1254 Nov 11 23:37 README-ls.md
+-rw------- 1 ogonz007 classes    2099 Dec  5 19:13 README.md
+-rwx------ 1 ogonz007 classes   10678 Dec  5 19:45 rshell.cpp
+-rw------- 1 ogonz007 classes   24576 Dec  5 19:45 .rshell.cpp.swj
+-rw------- 1 ogonz007 classes   28672 Dec  5 18:42 .rshell.cpp.swk
+-rw------- 1 ogonz007 classes   16384 Dec  2 15:56 .rshell.cpp.swl
+-rw------- 1 ogonz007 classes   20480 Nov 30 18:02 .rshell.cpp.swm
+-rw------- 1 ogonz007 classes   20480 Nov 30 16:50 .rshell.cpp.swn
+-rw------- 1 ogonz007 classes   24576 Nov 30 16:35 .rshell.cpp.swo
+-rw------- 1 ogonz007 classes   12288 Nov 25 10:20 .rshell.cpp.swp
+drwx------ 2 ogonz007 classes    4096 Nov 11 23:46 src
+drwx------ 2 ogonz007 classes    4096 Dec  5 19:52 tests
+-rw------- 1 ogonz007 classes    1951 Nov  3 11:31 Timer.h
+-rw------- 1 ogonz007 classes       5 Dec  5 19:53 tmp
+-rw------- 1 ogonz007 classes    1720 Dec  5 19:53 tmp2
+-rw------- 1 ogonz007 classes      40 Dec  5 19:54 tmp3
+-rw------- 1 ogonz007 classes   12288 Nov 19 08:19 .token_test.cpp.swp
+/class/classes/ogonz007/cs100/HW/rshell $ tr a-z A-Z < tmp3 > tmp4
+/class/classes/ogonz007/cs100/HW/rshell $ tail    cat < tmp4
+/CLASS/CLASSES/OGONZ007/CS100/HW/RSHELL
+TOTAL 5104
+DRWX------ 6 OGONZ007 CLASSES    4096 DEC  5 19:54 .
+DRWX------ 4 OGONZ007 CLASSES    4096 NOV  4 13:50 ..
+DRWX------ 2 OGONZ007 CLASSES    4096 DEC  5 19:53 BIN
+-RWX------ 1 OGONZ007 CLASSES    3463 DEC  4 13:06 CHECKSYSCALLS.SH
+-RW------- 1 OGONZ007 CLASSES    3277 NOV 11 23:51 CP.CPP
+DRWX------ 8 OGONZ007 CLASSES    4096 DEC  5 19:50 .GIT
+-RW------- 1 OGONZ007 CLASSES 4953699 NOV 11 23:37 INPUT
+-RWX------ 1 OGONZ007 CLASSES    9948 DEC  5 19:32 IWANTTHISONE.CPP
+-RW------- 1 OGONZ007 CLASSES      99 OCT 28 10:05 LICENSE
+-RWX------ 1 OGONZ007 CLASSES   15697 DEC  5 19:53 LS
+-RW------- 1 OGONZ007 CLASSES    3231 NOV 12 00:02 LS.CPP
+-RWX------ 1 OGONZ007 CLASSES     383 DEC  5 19:49 MAKEFILE
+-RW------- 1 OGONZ007 CLASSES    1254 NOV 11 23:37 README-LS.MD
+-RW------- 1 OGONZ007 CLASSES    2099 DEC  5 19:13 README.MD
+-RWX------ 1 OGONZ007 CLASSES   10678 DEC  5 19:45 RSHELL.CPP
+-RW------- 1 OGONZ007 CLASSES   24576 DEC  5 19:45 .RSHELL.CPP.SWJ
+-RW------- 1 OGONZ007 CLASSES   28672 DEC  5 18:42 .RSHELL.CPP.SWK
+-RW------- 1 OGONZ007 CLASSES   16384 DEC  2 15:56 .RSHELL.CPP.SWL
+-RW------- 1 OGONZ007 CLASSES   20480 NOV 30 18:02 .RSHELL.CPP.SWM
+-RW------- 1 OGONZ007 CLASSES   20480 NOV 30 16:50 .RSHELL.CPP.SWN
+-RW------- 1 OGONZ007 CLASSES   24576 NOV 30 16:35 .RSHELL.CPP.SWO
+-RW------- 1 OGONZ007 CLASSES   12288 NOV 25 10:20 .RSHELL.CPP.SWP
+DRWX------ 2 OGONZ007 CLASSES    4096 NOV 11 23:46 SRC
+DRWX------ 2 OGONZ007 CLASSES    4096 DEC  5 19:52 TESTS
+-RW------- 1 OGONZ007 CLASSES    1951 NOV  3 11:31 TIMER.H
+-RW------- 1 OGONZ007 CLASSES       5 DEC  5 19:53 TMP
+-RW------- 1 OGONZ007 CLASSES    1720 DEC  5 19:53 TMP2
+-RW------- 1 OGONZ007 CLASSES      40 DEC  5 19:54 TMP3
+-RW------- 1 OGONZ007 CLASSES   12288 NOV 19 08:19 .TOKEN_TEST.CPP.SWP
+/class/classes/ogonz007/cs100/HW/rshell $ clear
+[H[2J/class/classes/ogonz007/cs100/HW/rshell $ tail -5 < input > tmp5
+/class/classes/ogonz007/cs100/HW/rshell $ cat tmp5
+zyzzyvas
+ZZ
+Zz
+zZt
+ZZZ
+/class/classes/ogonz007/cs100/HW/rshell $ head -10 > < input > tmp5 6
+/class/classes/ogonz007/cs100/HW/rshell $ cat < tmp6
+1080
+10-point
+10th
+11-point
+12-point
+16-point
+18-point
+1st
+2
+20-point
+/class/classes/ogonz007/cs100/HW/rshell $ exit
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m exit
+exit
+~
+ogonz007@hammer $ exit
+exit
+
+Script done on Fri 05 Dec 2014 07:57:08 PM PST
