@@ -11,17 +11,15 @@ rshell:
 	@cp rshell bin
 	@cp ls bin
 	@cp cp bin
+	@rm rshell
+	@rm ls 
+	@rm cp
 ls:
 	@$(compiler) $(flags) ls.cpp -o ls
 	@cp ls bin
 
-run: rshell ls
-	#@bin/rshell
-	#@bin/ls
+run: clean rshell
+	@bin/rshell
 	
 clean: 
-	@rm rshell
-	@rm ls
-	@rm cp
 	@rm -rf bin
-	@echo "THIS FOLDER IS CLEAN!!"
