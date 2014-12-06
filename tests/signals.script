@@ -1,0 +1,132 @@
+Script started on Fri 05 Dec 2014 09:47:04 PM PST
+~
+ogonz007@hammer $ cs100
+[0;91m
+===============================================================================
+|                                                                             |
+| You have enabled settings specific for cs100.                               |
+|                                                                             |
+===============================================================================
+[0m
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~[0;95m [0;36m$[0m cd cs100/HW/rshell
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m ls
+bin  checksyscalls.sh  cp  cp.cpp  input  IwantThisOne.cpp  LICENSE  ls  ls.cpp  Makefile  README-ls.md  README.md  rshell  rshell.cpp	src  tests  Timer.h
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m make
+make: Nothing to be done for `all'.
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m bin/rshell
+/class/classes/ogonz007/cs100/HW/rshell $ ls
+bin  checksyscalls.sh  cp  cp.cpp  input  IwantThisOne.cpp  LICENSE  ls  ls.cpp  Makefile  README-ls.md  README.md  rshell  rshell.cpp	src  tests  Timer.h
+/class/classes/ogonz007/cs100/HW/rshell $ la s -a
+.    checksyscalls.sh  .git		 LICENSE  Makefile	rshell		 .rshell.cpp.swk  .rshell.cpp.swn  src	    .token_test.cpp.swp
+..   cp		       input		 ls	  README-ls.md	rshell.cpp	 .rshell.cpp.swl  .rshell.cpp.swo  tests
+bin  cp.cpp	       IwantThisOne.cpp  ls.cpp   README.md	.rshell.cpp.swi  .rshell.cpp.swm  .rshell.cpp.swp  Timer.h
+/class/classes/ogonz007/cs100/HW/rshell $ pwd
+/class/classes/ogonz007/cs100/HW/rshell
+/class/classes/ogonz007/cs100/HW/rshell $ echo one
+one
+/class/classes/ogonz007/cs100/HW/rshell $ cat     echo one && echo two && echo three
+one
+two
+three
+/class/classes/ogonz007/cs100/HW/rshell $ echo one || echo th wo || echo three
+one
+/class/classes/ogonz007/cs100/HW/rshell $ ecc ho one && echo two || echot  three
+one
+two
+/class/classes/ogonz007/cs100/HW/rshell $ echo one || echo two && echo three
+one
+three
+/class/classes/ogonz007/cs100/HW/rshell $ whoami > tmp
+/class/classes/ogonz007/cs100/HW/rshell $ cat tmp
+ogonz007
+/class/classes/ogonz007/cs100/HW/rshell $ hostname >> tmp
+/class/classes/ogonz007/cs100/HW/rshell $ domainname >> tmp
+/class/classes/ogonz007/cs100/HW/rshell $ cat < tmp
+ogonz007
+hammer.cs.ucr.edu
+cs.ucr.edu
+/class/classes/ogonz007/cs100/HW/rshell $ bin/rshell
+/class/classes/ogonz007/cs100/HW/rshell $ exit
+/class/classes/ogonz007/cs100/HW/rshell $ ls
+bin  checksyscalls.sh  cp  cp.cpp  input  IwantThisOne.cpp  LICENSE  ls  ls.cpp  Makefile  README-ls.md  README.md  rshell  rshell.cpp	src  tests  Timer.h  tmp
+/class/classes/ogonz007/cs100/HW/rshell $ clear
+[H[2J/class/classes/ogonz007/cs100/HW/rshell $ cd src
+/class/classes/ogonz007/cs100/HW/rshell/src $ cd ..
+/class/classes/ogonz007/cs100/HW/rshell $ cd 
+/class/classes/ogonz007 $ cd cs100/HW/rshell
+/class/classes/ogonz007/cs100/HW/rshell $ cd ~
+/class/classes/ogonz007 $ cd cs100/HW/rshell
+/class/classes/ogonz007/cs100/HW/rshell $ ls
+bin  checksyscalls.sh  cp  cp.cpp  input  IwantThisOne.cpp  LICENSE  ls  ls.cpp  Makefile  README-ls.md  README.md  rshell  rshell.cpp	src  tests  Timer.h  tmp
+/class/classes/ogonz007/cs100/HW/rshell $ cd tmp
+cd: tmp: Not a directory
+/class/classes/ogonz007/cs100/HW/rshell $ ^C
+/class/classes/ogonz007/cs100/HW/rshell $ cat
+^C/class/classes/ogonz007/cs100/HW/rshell $ top
+[H[2J[mtop - 21:51:35 up 23 days,  3:11, 40 users,  load average: 1.39, 1.36, 1.31[m[m[K
+Tasks:[m[m[m 884 [m[mtotal,[m[m[m   1 [m[mrunning,[m[m[m 879 [m[msleeping,[m[m[m   4 [m[mstopped,[m[m[m   0 [m[mzombie[m[m[K
+Cpu(s):[m[m[m  0.0%[m[mus,[m[m[m  0.0%[m[msy,[m[m[m  0.0%[m[mni,[m[m[m 99.9%[m[mid,[m[m[m  0.0%[m[mwa,[m[m[m  0.0%[m[mhi,[m[m[m  0.0%[m[msi,[m[m[m  0.0%[m[mst[m[m[K
+Mem: [m[m[m 264524916k [m[mtotal,[m[m[m 15494292k [m[mused,[m[m[m 249030624k [m[mfree,[m[m[m   424576k [m[mbuffers[m[m[K
+Swap:[m[m[m 27585532k [m[mtotal,[m[m[m        0k [m[mused,[m[m[m 27585532k [m[mfree,[m[m[m  8382804k [m[mcached[m[m[K
+[6;1H
+[7m  PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND                                                                                                               [m[m[K
+[m[m28773 ogonz007  20   0 19928 1876  916 R  3.8  0.0   0:00.04 top                                                                                                                   [m[m
+[m    1 root      20   0 23596 1604 1268 S  0.0  0.0   0:06.97 init                                                                                                                  [m[m
+[m    2 root      20   0     0    0    0 S  0.0  0.0   0:00.19 kthreadd                                                                                                              [m[m
+[m    3 root      RT   0     0    0    0 S  0.0  0.0   0:00.17 migration/0                                                                                                           [m[m
+[m    4 root      20   0     0    0    0 S  0.0  0.0   0:01.23 ksoftirqd/0                                                                                                           [m[m
+[m    5 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 stopper/0                                                                                                             [m[m
+[m    6 root      RT   0     0    0    0 S  0.0  0.0   0:01.52 watchdog/0                                                                                                            [m[m
+[m    7 root      RT   0     0    0    0 S  0.0  0.0   0:00.76 migration/1                                                                                                           [m[m
+[m    8 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 stopper/1                                                                                                             [m[m
+[m    9 root      20   0     0    0    0 S  0.0  0.0   0:03.96 ksoftirqd/1                                                                                                           [m[m
+[m   10 root      RT   0     0    0    0 S  0.0  0.0   0:01.41 watchdog/1                                                                                                            [m[m
+[m   11 root      RT   0     0    0    0 S  0.0  0.0   0:00.04 migration/2                                                                                                           [m[m
+[m   12 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 stopper/2                                                                                                             [m[m
+[m   13 root      20   0     0    0    0 S  0.0  0.0   0:00.82 ksoftirqd/2                                                                                                           [m[m
+[m   14 root      RT   0     0    0    0 S  0.0  0.0   0:01.34 watchdog/2                                                                                                            [m[m
+[m   15 root      RT   0     0    0    0 S  0.0  0.0   0:00.03 migration/3                                                                                                           [m[m
+[m   16 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 stopper/3                                                                                                             [m[m
+[m   17 root      20   0     0    0    0 S  0.0  0.0   0:01.10 ksoftirqd/3                                                                                                           [m[m
+[m   18 root      RT   0     0    0    0 S  0.0  0.0   0:01.33 watchdog/3                                                                                                            [m[m
+[m   19 root      RT   0     0    0    0 S  0.0  0.0   0:00.02 migration/4                                                                                                           [m[m
+[m   20 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 stopper/4                                                                                                             [m[m
+[m   21 root      20   0     0    0    0 S  0.0  0.0   0:01.18 ksoftirqd/4                                                                                                           [m[m
+[m   22 root      RT   0     0    0    0 S  0.0  0.0   0:01.31 watchdog/4                                                                                                            [m[m
+[m   23 root      RT   0     0    0    0 S  0.0  0.0   0:00.04 migration/5                                                                                                           [m[m
+[m   24 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 stopper/5                                                                                                             [m[m
+[m   25 root      20   0     0    0    0 S  0.0  0.0   0:02.42 ksoftirqd/5                                                                                                           [m[m
+[m   26 root      RT   0     0    0    0 S  0.0  0.0   0:01.31 watchdog/5                                                                                                            [m[m
+[m   27 root      RT   0     0    0    0 S  0.0  0.0   0:00.09 migration/6                                                                                                           [m[m
+[m   28 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 stopper/6                                                                                                             [m[m
+[m   29 root      20   0     0    0    0 S  0.0  0.0   0:07.60 ksoftirqd/6                                                                                                           [m[m
+[m   30 root      RT   0     0    0    0 S  0.0  0.0   0:01.58 watchdog/6                                                                                                            [m[m
+[m   31 root      RT   0     0    0    0 S  0.0  0.0   0:02.59 migration/7                                                                                                           [m[m
+[m   32 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 stopper/7                                                                                                             [m[m
+[m   33 root      20   0     0    0    0 S  0.0  0.0   0:06.92 ksoftirqd/7                                                                                                           [m[m
+[m   34 root      RT   0     0    0    0 S  0.0  0.0   0:01.43 watchdog/7                                                                                                            [m[m
+[m   35 root      RT   0     0    0    0 S  0.0  0.0   0:00.07 migration/8                                                                                                           [m[m
+[m   36 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 stopper/8                                                                                                             [m[m
+[m   37 root      20   0     0    0    0 S  0.0  0.0   0:02.86 ksoftirqd/8                                                                                                           [m[m
+[m   38 root      RT   0     0    0    0 S  0.0  0.0   0:01.49 watchdog/8                                                                                                            [m[m
+[m   39 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/9                                                                                                           [m[m[6;1H[K[48;1H
+/class/classes/ogonz007/cs100/HW/rshell $ ls^C
+/class/classes/ogonz007/cs100/HW/rshell $ clear^C pwd
+/class/classes/ogonz007/cs100/HW/rshell
+/class/classes/ogonz007/cs100/HW/rshell $ bin/shell
+terminate called after throwing an instance of 'std::logic_error'
+  what():  basic_string::_S_construct NULL not valid
+/class/classes/ogonz007/cs100/HW/rshell $ ^C
+/class/classes/ogonz007/cs100/HW/rshell $ bin/rh shell
+/class/classes/ogonz007/cs100/HW/rshell $ ^C
+/class/classes/ogonz007/cs100/HW/rshell $ exit
+/class/classes/ogonz007/cs100/HW/rshell $ exit^C
+/class/classes/ogonz007/cs100/HW/rshell $ ^C^C^C^C^C^C^C^C^C^C^C
+/class/classes/ogonz007/cs100/HW/rshell $ exit
+[s%%%%%%%%%%[u[0;32mogonz007[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/HW/rshell[0;95m (master) [0;36m$[0m exit
+exit
+~
+ogonz007@hammer $ exit
+exit
+
+Script done on Fri 05 Dec 2014 09:52:43 PM PST
