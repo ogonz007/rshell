@@ -348,7 +348,7 @@ int main()
 							cout << "app = " << app << endl;
 							app = 0;
 						}
-						///--- checking for commenting using # sign ---///
+						////--- checking for commenting using # sign ---///
 						if((*argv[0] == '#'))
 						{
 							exit(0);;
