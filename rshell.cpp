@@ -345,7 +345,31 @@ int main()
 
 						if(app)
 						{
-							cout << "app = " << app << endl;
+							unsigned int counter3 = 0;
+							while(*argv[counter3] != '>')
+							{
+								counter3++;
+							}
+							//cout << "argv[" << counter2 << "] = " << argv[counter2+1] << endl;
+							
+							string redir_output = argv[counter3+1];
+							//cout << "redir_output = " << redir_output << endl;
+							argv[counter3] = '\0';
+							argv[counter3+1] = '\0';
+
+							if(app){
+							int fd_out = open(redir_output.c_str(),O_WRONLY | O_APPEND);
+							if(fd_out == -1)
+							{perror("creat failed\n"); exit(1);}
+							
+							int dup_err2 = dup2(fd_out,STDOUT_FILENO);
+							if(dup_err2 == -1)
+							{perror("dup2 failed\n"); exit(1);}
+							
+							int close_err2 = close(fd_out);
+							if(close_err2 == -1)
+							{perror("close failed\n"); exit(1);}
+							}
 							app = 0;
 						}
 						////--- checking for commenting using # sign ---///
