@@ -228,7 +228,7 @@ int main()
 				{
 					cd_found = 1;
 					
-					if(argv[1] == '\0')
+					if((argv[1] == '\0') || (*argv[1] == '~'))
 					{
 						char* homePath = getenv("HOME");
 						currDir = homePath;
@@ -320,10 +320,8 @@ int main()
 							{
 								counter2++;
 							}
-							//cout << "argv[" << counter2 << "] = " << argv[counter2+1] << endl;
 							
 							string redir_output = argv[counter2+1];
-							//cout << "redir_output = " << redir_output << endl;
 							argv[counter2] = '\0';
 							argv[counter2+1] = '\0';
 
@@ -350,10 +348,8 @@ int main()
 							{
 								counter3++;
 							}
-							//cout << "argv[" << counter2 << "] = " << argv[counter2+1] << endl;
 							
 							string redir_output = argv[counter3+1];
-							//cout << "redir_output = " << redir_output << endl;
 							argv[counter3] = '\0';
 							argv[counter3+1] = '\0';
 
@@ -395,7 +391,6 @@ int main()
 							string tmpPathList = pathList[counter];
 							string tmpCmd = argv[0];
 							tmpPathList = tmpPathList + "/" + tmpCmd;
-							//cout << "tmpPathList = " << tmpPathList << endl;
 							execv(tmpPathList.c_str(),argv);
 						}
 						if(r == -1)
