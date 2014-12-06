@@ -395,14 +395,14 @@ int main()
 								//cerr << "argv[" << counter3 << "] = " << argv[counter3] << endl;
 								counter3++;
 							}
-							cerr << argv[counter3][0] << argv[counter3][1] << endl;
+							//cerr << argv[counter3][0] << argv[counter3][1] << endl;
 							if((argv[counter3][0] == '>') && (argv[counter3][1] == '>')){
 							
 							string redir_outAppend = argv[counter3+1];
 							//cout << "redir_output = " << redir_output << endl;
 							//argv[counter3] = '\0';
 							//argv[counter3+1] = '\0';
-							cerr << "argv[" << counter3 << "] = " << argv[counter3] << endl;
+							//cerr << "argv[" << counter3 << "] = " << argv[counter3] << endl;
 							while(argv[counter3] != '\0')
 							{
 								argv[counter3] = '\0';
