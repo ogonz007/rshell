@@ -67,6 +67,8 @@ Rshell Program Overview:
 Rshell Bugs:
 	1. Piping is not currently working 
 	2. combining < with >> in the same command line will give error
+	3. running rshell within rshell works, but some functions called in the second rshell cause
+	   errors
 
 ls Program Overview:
 	This program was written to implement the ls funtion found in unix and linux BASH command shells.
