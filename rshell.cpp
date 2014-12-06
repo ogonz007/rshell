@@ -363,7 +363,7 @@ int main()
 								counter2++;
 							}
 							//cerr << "testing >" << argv[counter2][0] << argv[counter2][1] << endl;
-							if((argv[counter2][0] == '>') && (argv[counter2][1] != '>')){
+							//if((argv[counter2][0] == '>') && (argv[counter2][1] != '>')){
 							
 							string redir_output = argv[counter2+1];
 							//cout << "redir_output = " << redir_output << endl;
@@ -384,7 +384,7 @@ int main()
 							{perror("close failed\n"); exit(1);}
 							}					
 							out = 0;
-							}
+							//}
 						}
 
 						if(app)
@@ -396,7 +396,7 @@ int main()
 								counter3++;
 							}
 							//cerr << argv[counter3][0] << argv[counter3][1] << endl;
-							if((argv[counter3][0] == '>') && (argv[counter3][1] == '>')){
+							//if((argv[counter3][0] == '>') && (argv[counter3][1] == '>')){
 							
 							string redir_outAppend = argv[counter3+1];
 							//cout << "redir_output = " << redir_output << endl;
@@ -423,7 +423,7 @@ int main()
 								if(close_err2 == -1)
 								{perror("close failed\n"); exit(1);}
 							}					
-							app = 0;}
+							app = 0;//}
 						}
 
 						///--- checking for commenting using # sign ---///
